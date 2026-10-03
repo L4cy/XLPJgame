@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="script/app-runtime.js"></script>
+
+<meta charset="UTF-8">
+
+<title>AES</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    background:#111827;
+
+    overflow:auto;
+
+}
+
+/* 主窗口 */
+.aes-box{
+
+    width:450px;
+
+    padding:35px;
+
+
+    background:
+    rgba(255,255,255,0.1);
+
+
+    backdrop-filter:blur(10px);
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+    0 0 30px rgba(0,0,0,0.5);
+
+
+    color:white;
+
+
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+    position:relative;
+
+
+}
+
+h2{
+
+    text-align:center;
+
+    margin-top:0;
+
+}
+
+/* 标签 */
+
+label,
+p{
+
+    margin-bottom:8px;
+
+}
+
+/* 输入框 */
+
+textarea,
+input,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    font-size:16px;
+
+    border-radius:10px;
+
+    border:none;
+
+    outline:none;
+
+    background:
+    rgba(255,255,255,0.9);
+
+}
+
+textarea{
+
+    resize:none;
+
+}
+
+/* 按钮 */
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#66fcf1;
+
+    color:#111;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 20px #66fcf1;
+
+}
+
+/* 结果 */
+
+#result{
+
+    background:
+    rgba(0,0,0,0.5);
+
+    color:#d1d4d4;
+
+}
+
+/* 退出按钮 */
+
+.exit-btn{
+
+    position:absolute;
+
+
+    right:15px;
+
+    top:15px;
+
+
+    width:32px;
+
+    height:32px;
+
+
+    border-radius:50%;
+
+
+    border:none;
+
+
+    background:rgba(255,255,255,0.15);
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+    line-height:28px;
+
+
+    text-align:center;
+
+
+    padding:0;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.exit-btn:hover{
+
+
+    background:#ff4d4f;
+
+
+    color:white;
+
+
+    transform:scale(1.1);
+
+
+}
+.exit-btn:hover{
+
+    background:#ff4d4f;
+
+    color:white;
+
+}
+.article-card,
+input::placeholder{
+
+    color:#999;
+
+    font-style:italic;
+
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="aes-box">
+
+<button 
+class="exit-btn" 
+type="button"
+aria-label="关闭AES，返回空间"
+onclick="exitGame()">
+×
+</button>
+
+
+<h2>AES 小工具</h2>
+
+
+<h3>
+输入
+</h3>
+
+<textarea 
+id="inputText"
+rows="5">
+</textarea>
+
+<h3>
+Key
+</h3>
+
+<input 
+id="keyInput"
+type="text"
+placeholder="请分清虚拟与现实"
+>
+<h3>
+模式
+</h3>
+
+<select id="modeSelect">
+
+<option value="encrypt">
+加密
+</option>
+
+<option value="decrypt">
+解密
+</option>
+
+</select>
+
+<button onclick="runAES()">
+
+执行
+
+</button>
+
+<h3>
+结果
+</h3>
+
+<textarea 
+id="result"
+rows="5"
+readonly>
+</textarea>
+
+</div>
+
+<script src="script/crypto-js.min.js"></script>
+
+<script src="script/scriptPartOne.js"></script>
+
+<script>
+
+function runAES(){
+
+    let input =
+    document.getElementById("inputText").value;
+
+    let key =
+    document.getElementById("keyInput").value;
+
+    let mode =
+    document.getElementById("modeSelect").value;
+
+    let result =
+    AESProcess(
+        input,
+        key,
+        mode
+    );
+
+    document.getElementById("result").value=result;
+
+}
+
+function exitGame(){
+
+    // 返回保留在后台的空间页面。
+
+    GameApp.openPage("QZone.html");
+
+}
+
+</script>
+
+</body>
+
+</html>

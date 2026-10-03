@@ -1,0 +1,370 @@
+/* =====================
+   QQ窗口
+===================== */
+.qq-window{
+    position:fixed;
+    width:75%;
+    height:80%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:#f5f6fa;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.35);
+    display:flex;
+    flex-direction:column;
+}
+
+/* 顶部 */
+
+.qq-header{
+    height:8%;
+    background:#12b7f5;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    position:relative;
+}
+
+.qq-close{
+
+    position:absolute;
+
+    right:2%;
+
+    width:3%;
+    aspect-ratio:1;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+    /* 控制 × */
+    font-size:24px;
+    font-weight:300;
+
+    line-height:28px;
+
+    text-align:center;
+    background:#eee;
+
+    color:#555;
+
+    transition:0.2s;
+
+}
+.qq-close:hover{
+
+    background:#ff4d4f;
+
+    color:white;
+
+}
+/* 主体 */
+
+.qq-body{ 
+    flex:1;
+    display:flex;
+    min-height:0;
+}
+/* 左侧 */
+
+.qq-sidebar{
+    width:22%;
+    background:#eeeeee;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    flex-shrink:0;
+
+    height:100%;
+}
+
+.qq-item{
+    height:12%;
+    display:flex;
+    align-items:center;
+    padding-left:7%;
+    cursor:pointer;
+    position:relative;
+}
+
+.qq-item img{
+    width:18%;
+    height:auto;
+    aspect-ratio:1;
+    border-radius:50%;
+    margin-right:5%;
+}
+
+.qq-item.active{
+    background:#d5ecff;
+
+}
+
+/* 聊天 */
+.qq-chat {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    min-height:0;
+    position:relative;
+}
+.qq-chat-title{
+    height:8%;
+    flex-shrink:0;
+    background:white;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    padding-left:3%;
+}
+
+.qq-member-panel {
+    display: none;
+}
+.qq-message-area { 
+    flex:1;
+    overflow-y:auto;
+    padding:.8% 2% 2%;
+    min-height:0;
+}
+/* 输入 */
+.qq-input{
+    height:8%;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    padding:1% 1.5%;
+    background:white;
+}
+.qq-input input{
+    flex:1;
+    height:75%;
+    padding:0 2%;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+.qq-input button{
+    width:10%;
+    height:70%;
+    margin-left:1.5%;
+    padding:0 1%;
+    background:#12b7f5;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+.qq-input button:hover{
+    background:#12a4d8;
+}
+.qq-input.is-disabled input,
+.qq-input.is-disabled button{
+    cursor:not-allowed;
+    opacity:.58;
+}
+.qq-input.is-disabled button:hover{
+    background:#12b7f5;
+}
+
+/* 群成员 */
+.qq-member-panel{
+    width:20%;
+    background:#fafafa;
+    border-left:1px solid #ddd;
+}
+
+.member-title{
+    padding:7%;
+    border-bottom:1px solid #ddd;
+}
+
+.member{
+    display:flex;
+    align-items:center;
+    padding:5%;
+    cursor:pointer;
+}
+
+.member:hover{
+    background:#e8f4ff;
+}
+
+.member img{
+    width:20%;
+    height:auto;
+    aspect-ratio:1;
+    border-radius:50%;
+    margin-right:5%;
+}
+
+
+.qq-choice{
+    display:none;
+    position:absolute;
+    bottom:11%;
+    left:2%;
+    right:2%;
+    background:white;
+    border:1px solid #ddd;
+    padding:2%;
+    border-radius:10px;
+}
+.qq-choice button {
+    display: block;   /* 每个按钮单独占一行 */
+    width: 100%;      /* 占满选项区域 */
+    margin: 1.5% 0;    /* 上下间距 */
+}
+
+.qq-choice.is-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.5%;
+}
+
+.qq-choice.is-grid button{
+    margin:0;
+}
+
+/* 每个日期只在当天第一条消息上方显示一次 */
+.chat-time-divider{
+    margin:2% 0 1%;
+    color:#999;
+    font-size:12px;
+    line-height:1.4;
+    text-align:center;
+}
+.qq-message-area > .chat-time-divider:first-child{
+    margin-top:1%;
+}
+
+.chat-hint{
+    width:fit-content;
+    max-width:80%;
+    margin:2% auto;
+    color:#999;
+    font-size:12px;
+    line-height:1.6;
+    text-align:center;
+}
+/* 每条消息 */
+.message{
+    display:flex;
+    margin:1% 2%;
+}
+
+
+/* 玩家消息右侧 */
+.message.self{
+    justify-content:flex-end;
+}
+
+/* 对方消息左侧 */
+.message.other{
+    justify-content:flex-start;
+}
+
+/* 气泡 */
+.bubble{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width:60%;
+    padding:1% 2%;
+    border-radius:10px;
+    line-height:1.5;
+    text-align:left;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+
+/* 玩家颜色 */
+.self .bubble{
+    background:#def0ff;
+}
+
+/* 对方颜色 */
+.other .bubble{
+    background:white;
+}
+.unread-dot{
+
+    position:absolute;
+
+    right:7%;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:5%;
+
+    aspect-ratio:1;
+
+    background:red;
+
+    border-radius:50%;
+
+}
+
+/* 新回复弹窗 */
+.qq-toast-container{
+    position:fixed;
+    right:2%;
+    bottom:3%;
+    z-index:9999;
+    display:flex;
+    width:22%;
+    flex-direction:column;
+    gap:2%;
+    pointer-events:none;
+}
+
+.qq-toast{
+    padding:4% 5%;
+    border:1px solid rgba(18,183,245,.28);
+    border-radius:10px;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 8px 28px rgba(0,0,0,.22);
+    color:#333;
+    animation:qq-toast-lifetime 2s ease forwards;
+}
+
+.qq-toast-title{
+    margin-bottom:2%;
+    color:#1683c8;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.qq-toast-message{
+    overflow:hidden;
+    color:#555;
+    font-size:13px;
+    line-height:1.5;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+@keyframes qq-toast-lifetime{
+    0%{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    10%,85%{
+        opacity:1;
+        transform:translateY(0);
+    }
+    100%{
+        opacity:0;
+        transform:translateY(8px);
+    }
+}
+

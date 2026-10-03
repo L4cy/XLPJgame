@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="script/app-runtime.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="用通俗的方式了解 AES 的诞生、工作原理、安全性与日常应用。">
+    <title>AES：藏在数字生活背后的“加密锁”</title>
+    <style>
+        * { box-sizing: border-box; }
+        :root {
+            --text: #222;
+            --muted: #888;
+            --line: #eee;
+            --accent: #e84a3c;
+            --soft-bg: #f7f8fa;
+            --tip-bg: #fff8f2;
+        }
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--text);
+            font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .top-line { height: 3px; background: var(--accent); }
+        .article {
+            width: min(100% - 40px, 760px);
+            margin: 0 auto;
+            padding: 48px 0 64px;
+        }
+        .category {
+            margin-bottom: 14px;
+            color: var(--accent);
+            font-size: 15px;
+            font-weight: 600;
+        }
+        h1 {
+            margin: 0;
+            color: #191919;
+            font-size: clamp(30px, 5vw, 42px);
+            line-height: 1.3;
+            letter-spacing: -.5px;
+        }
+        .subtitle {
+            margin: 16px 0 0;
+            color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 22px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .author-name { color: #555; font-weight: 600; }
+        .meta-dot::before { content: "·"; margin-right: 12px; }
+        .ai-tip {
+            margin: 22px 0 30px;
+            color: #999;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .lead {
+            margin: 0 0 34px;
+            padding: 20px 22px;
+            background: var(--soft-bg);
+            border-radius: 4px;
+            color: #4c4c4c;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+        h2 {
+            position: relative;
+            margin: 48px 0 20px;
+            padding-left: 14px;
+            color: #202020;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+        h2::before {
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 0;
+            width: 4px;
+            border-radius: 2px;
+            background: var(--accent);
+            content: "";
+        }
+        h3 { margin: 30px 0 12px; font-size: 19px; line-height: 1.6; }
+        p {
+            margin: 0 0 22px;
+            font-size: 17px;
+            line-height: 1.95;
+            text-align: justify;
+            overflow-wrap: break-word;
+        }
+        strong { color: #181818; }
+        .data-card {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 26px 0 30px;
+        }
+        .data-item {
+            padding: 20px 12px;
+            background: var(--soft-bg);
+            border: 1px solid #f0f0f0;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .data-item b {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent);
+            font-size: 22px;
+        }
+        .data-item span { color: #777; font-size: 14px; }
+        .process {
+            margin: 26px 0 30px;
+            padding: 24px;
+            background: #25272b;
+            border-radius: 6px;
+            color: #f5f5f5;
+        }
+        .process-title { margin-bottom: 18px; color: #b8b8b8; font-size: 14px; }
+        .process-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            align-items: center;
+        }
+        .process-step { font-size: 14px; line-height: 1.5; text-align: center; }
+        .process-step b {
+            display: block;
+            margin-bottom: 4px;
+            color: #fff;
+            font-size: 16px;
+        }
+        .note {
+            margin: 28px 0;
+            padding: 18px 20px;
+            background: var(--tip-bg);
+            border-left: 4px solid #f0a35b;
+            color: #5d4a38;
+            font-size: 16px;
+            line-height: 1.85;
+        }
+        .scene-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 24px 0 30px;
+        }
+        .scene { padding: 18px 20px; border: 1px solid #ebebeb; border-radius: 6px; }
+        .scene b { display: block; margin-bottom: 7px; font-size: 17px; }
+        .scene span { color: #666; font-size: 15px; line-height: 1.7; }
+        .ending { margin-top: 48px; padding-top: 30px; border-top: 1px solid var(--line); }
+        .signature { margin-top: 30px; color: #777; font-size: 15px; text-align: right; }
+        .close-btn {
+            position: fixed;
+            z-index: 10;
+            top: 20px;
+            right: 24px;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 50%;
+            background: rgba(255,255,255,.92);
+            color: #777;
+            font-size: 26px;
+            line-height: 38px;
+            cursor: pointer;
+            transition: color .2s, border-color .2s, transform .2s;
+        }
+        .close-btn:hover { border-color: #bbb; color: #222; transform: rotate(90deg); }
+        @media (max-width: 680px) {
+            .article { width: min(100% - 32px, 760px); padding: 32px 0 48px; }
+            .subtitle { font-size: 16px; }
+            .meta { flex-wrap: wrap; gap: 7px; padding-right: 48px; }
+            .meta-dot::before { margin-right: 7px; }
+            p { font-size: 16px; line-height: 1.9; }
+            h2 { margin-top: 40px; font-size: 22px; }
+            .data-card, .scene-list { grid-template-columns: 1fr; }
+            .process-list { grid-template-columns: 1fr 1fr; gap: 20px 10px; }
+            .close-btn { top: 14px; right: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-line"></div>
+    <button class="close-btn" type="button" aria-label="关闭文章" onclick="closeArticle()">×</button>
+
+    <main class="article">
+        <header>
+            <div class="category">密码学入门</div>
+            <h1>AES：藏在数字生活背后的“加密锁”</h1>
+            <p class="subtitle">从一段明文到一串看不懂的密文，它究竟做了什么？</p>
+            <div class="meta">
+                <span class="author-name">小L学密码</span>
+                <span class="meta-dot">2022-06-01</span>
+                <span class="meta-dot">约 6 分钟阅读</span>
+            </div>
+            <div class="ai-tip">本文由 AI 辅助整理，仅供密码学入门学习与交流。</div>
+        </header>
+
+        <p class="lead">给文件设置密码、连接加密网络、在手机里保存重要资料……这些习以为常的操作背后，往往都有加密算法在默默工作。AES 就是其中最常见的一种。它不神秘，也不是简单地把文字“打乱”，而是一套经过严格设计和长期检验的加密规则。</p>
+
+        <section>
+            <h2>为什么会有 AES？</h2>
+            <p>在 AES 出现以前，人们曾广泛使用 DES，也就是“数据加密标准”。DES 在诞生之初足够可靠，但它的密钥只有 56 位。随着计算机越来越快，通过大量尝试寻找正确密钥的成本不断下降，这把曾经牢固的锁逐渐显得不够安全。</p>
+            <p>1997 年，美国国家标准与技术研究院（NIST）面向全球征集新一代加密标准。经过数年的公开评审，比利时密码学家 Joan Daemen 和 Vincent Rijmen 设计的 Rijndael 算法胜出，并在 2001 年正式成为 AES，也就是<strong>高级加密标准</strong>。</p>
+            <p>一套重要的密码算法要成为标准，不仅要足够安全，还要运行高效、便于软硬件实现，并经得起同行反复分析。AES 能沿用至今，靠的正是这些特点。</p>
+        </section>
+
+        <section>
+            <h2>AES 到底在加密什么？</h2>
+            <p>AES 属于<strong>对称密钥分组密码</strong>。所谓“对称”，是指加密和解密使用同一把密钥；所谓“分组”，则是把数据切成固定大小的小块，再逐块处理。</p>
+            <p>AES 每次处理 128 位数据，也就是 16 字节。密钥则可以选择 128 位、192 位或 256 位。密钥越长，可选组合越多，相应的加密轮数也会增加。</p>
+            <div class="data-card" aria-label="AES 三种常用密钥规格">
+                <div class="data-item"><b>AES-128</b><span>128 位密钥 · 10 轮</span></div>
+                <div class="data-item"><b>AES-192</b><span>192 位密钥 · 12 轮</span></div>
+                <div class="data-item"><b>AES-256</b><span>256 位密钥 · 14 轮</span></div>
+            </div>
+            <p>可以把它想象成一只带有多层机关的保险箱：数据先进入箱内，随后经历多轮替换、移动和混合；只有持有正确密钥的人，才能按相反的规则恢复原始内容。</p>
+        </section>
+
+        <section>
+            <h2>一段明文是怎样变成密文的？</h2>
+            <p>进入 AES 的 16 字节数据会被排成一个 4×4 的“状态矩阵”。之后，算法围绕这个矩阵重复进行多轮变换。除个别轮次略有不同外，一轮通常可以概括为下面四步：</p>
+            <div class="process">
+                <div class="process-title">AES 一轮中的主要变换</div>
+                <div class="process-list">
+                    <div class="process-step"><b>字节替换</b>用替换表改变每个字节</div>
+                    <div class="process-step"><b>行移位</b>重新排列字节的位置</div>
+                    <div class="process-step"><b>列混合</b>让局部变化扩散开来</div>
+                    <div class="process-step"><b>轮密钥加</b>把密钥信息融入数据</div>
+                </div>
+            </div>
+            <h3>字节替换：打破直接对应关系</h3>
+            <p>算法会通过一张固定的替换表（S-box），把每个字节替换成另一个值。这一步提供了重要的非线性，使攻击者难以从密文直接推断明文规律。</p>
+            <h3>行移位与列混合：让变化传得更远</h3>
+            <p>行移位会改变字节的位置，列混合则对每一列进行数学变换。经过多轮处理后，明文中哪怕只改动一个比特，也可能让最终密文发生大范围变化。这种效果在密码学中叫作“扩散”。</p>
+            <h3>轮密钥加：真正由密钥控制的一步</h3>
+            <p>原始密钥会先被扩展成多组轮密钥，再分别与每轮的状态进行异或运算。前面的变换规则是公开的，真正需要保密的是密钥——现代密码学并不依赖“把算法藏起来”获得安全性。</p>
+        </section>
+
+        <section>
+            <h2>AES-128 的“128”意味着什么？</h2>
+            <p>它意味着密钥共有 2<sup>128</sup> 种可能。这个数字大约是 3.4×10<sup>38</sup>。如果没有额外线索，攻击者想靠穷举找出正确密钥，需要面对一个极其庞大的搜索空间。</p>
+            <p>目前，对完整的 AES-128、AES-192 和 AES-256，尚没有能够在现实条件下直接破解的通用方法。不过，“算法安全”并不等于“用了就一定安全”。真实系统往往更容易在密钥管理、程序实现和使用方式上出现问题。</p>
+            <aside class="note"><strong>一个常见误区：</strong>AES-256 并不意味着所有场景都必须选它。AES-128 本身仍具有很高的安全强度。实际选择还要考虑协议要求、运行环境和性能，关键是采用成熟方案并妥善保管密钥。</aside>
+        </section>
+
+        <section>
+            <h2>它离我们的生活并不远</h2>
+            <p>AES 并不只存在于密码学论文里。因为安全性高、速度快，而且容易在硬件上加速，它已经进入许多日常数字场景。</p>
+            <div class="scene-list">
+                <div class="scene"><b>文件与备份</b><span>保护本地文档、压缩包和云端备份中的敏感内容。</span></div>
+                <div class="scene"><b>磁盘与设备</b><span>全盘加密和移动设备的数据保护机制常会用到 AES。</span></div>
+                <div class="scene"><b>网络通信</b><span>安全通信协议可以用 AES 加密正在传输的数据。</span></div>
+                <div class="scene"><b>无线网络</b><span>现代 Wi-Fi 安全机制也会在底层使用 AES 相关方案。</span></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>AES 不是一个人完成所有工作</h2>
+            <p>AES 的基本任务是隐藏数据内容，但“看不见内容”只是安全的一部分。我们通常还需要确认数据没有被篡改，并验证通信对象的身份。因此，实际系统不会只写一句“使用 AES”就万事大吉。</p>
+            <p>AES 还需要配合合适的工作模式、随机数和密钥管理方案。例如 AES-GCM 属于常见的认证加密方式，它能同时保护数据的机密性与完整性。相反，如果重复使用不该重复的随机数，或者直接用一个很弱的密码充当密钥，再强的算法也可能失去意义。</p>
+        </section>
+
+        <section class="ending">
+            <h2>写在最后</h2>
+            <p>从 2001 年成为标准到今天，AES 已经守护数字世界二十多年。它的价值不仅在于复杂的数学结构，也在于它把可靠的加密能力变成了可以广泛使用的基础工具。</p>
+            <p>对普通使用者来说，不必记住每一步计算，但可以记住一个简单结论：AES 是一把可靠的锁，而一套真正安全的系统，还需要正确上锁、保管好钥匙，并确认门没有被人换掉。</p>
+            <div class="signature">—— 小L学密码</div>
+        </section>
+    </main>
+
+    <script>
+        function closeArticle() {
+            GameApp.openPage("QZone.html");
+        }
+    </script>
+</body>
+</html>

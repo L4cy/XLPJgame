@@ -1,0 +1,200 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script/app-runtime.js"></script>
+
+    <link rel="stylesheet" href="./style/QQ.css?v=history-top-gap-4">
+    
+</head>
+
+<div class="qq-window">
+
+
+    <!-- 顶部 -->
+    <div class="qq-header">
+
+        <span>
+            Penguin
+        </span>
+
+        <button class="qq-close" type="button" aria-label="关闭Penguin，返回桌面">
+            ×
+        </button>
+
+    </div>
+
+
+
+    <div class="qq-body">
+
+
+        <!-- 左侧会话列表 -->
+        <div class="qq-sidebar">
+
+
+            <div class="qq-item active"
+                 data-type="friend"
+                 data-id="dragon">
+
+
+                <img src="figure/avatar/dragon.png">
+
+                红龙
+
+
+            </div>
+            <div class="qq-item"
+                data-type="friend"
+                data-id="ve">
+
+                <img src="avatar/ren.png">
+
+                罗德狗德岛分狗
+
+            </div>
+
+            <div class="qq-item"
+                data-type="friend"
+                data-id="jia">
+
+                <img src="figure/avatar/jia.png" alt="">
+
+                贾
+
+            </div>
+
+
+
+            <div class="qq-item"
+                id="group"
+                data-type="group"
+                data-id="ark-group">
+
+
+                <img src="avatar/group.png">
+
+                合约讨论群（325）
+
+
+            </div>
+            <div class="qq-item"
+                data-type="qzone">
+
+                <img src="avatar/qzone.png">
+
+                Penguin空间
+
+            </div>
+            
+
+
+        </div>
+
+
+        <!-- 聊天主体 -->
+
+        <div class="qq-chat">
+
+
+            <div class="qq-chat-title">
+
+                红龙
+
+            </div>
+
+
+            <!-- 消息区域 -->
+
+            <div class="qq-message-area">
+
+            </div>
+
+
+
+            <!-- 回复选项 -->
+
+            <div class="qq-choice">
+
+            </div>
+
+
+
+            <!-- 输入区域 -->
+
+            <div class="qq-input">
+
+                <input 
+                    id="chat-input"
+                    placeholder="输入消息"
+                >
+
+
+                <button id="send-btn">
+                    发送
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- 群成员区域 -->
+
+        <div class="qq-member-panel" style="display:none;" id="memberPanel">
+            
+            <div class="member-title">
+                群成员
+            </div>
+
+
+            <div class="member-list" id="member">
+
+
+                <div class="member" 
+                    data-id="dragon">
+
+                    <img src="figure/avatar/dragon.png">
+
+                    红龙
+
+                </div>
+
+
+
+                <div class="member"
+                     data-id="ve">
+
+                    <img src="avatar/shinji.png">
+
+                    罗德狗德岛分狗
+
+                </div>
+                <div class="member">
+
+                    <img src="avatar/xlpj.png">
+
+                    XLPJ（我）
+
+                </div>
+                <div class="member">
+
+                    <img src="avatar/shinji.png">
+
+                    省略322名成员
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+<script src="./script/QQ.js?v=ve-complete-1"></script>

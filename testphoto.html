@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="script/app-runtime.js"></script>
+<title>文件夹</title>
+
+<link rel="stylesheet" href="style/photofolder.css?v=folder-close-1">
+
+</head>
+<body>
+<div id="window" class="hidden">
+    <header class="folder-header">
+        <span><span class="folder-mark">📁</span> <span id="folderTitle">文件夹</span></span>
+        <button id="folderCloseBtn" type="button" aria-label="关闭文件夹，返回桌面" onclick="closeFolder()">×</button>
+    </header>
+    <nav class="folder-path" aria-label="文件夹路径">
+        <button id="folderUp" type="button" aria-label="返回文件夹列表" onclick="openDirectory(null)">↑</button>
+        <button class="folder-breadcrumb" type="button" onclick="openDirectory(null)">文件夹</button>
+        <span id="folderPathSeparator" hidden>›</span><span id="folderPathName" hidden></span>
+    </nav>
+    <div class="folder-body">
+        <aside class="folder-sidebar" aria-label="文件夹导航"><span class="folder-section">此电脑</span><button class="folder-nav" data-directory="" type="button" onclick="openDirectory(null)">📁 文件夹</button><div id="folderNavigation"></div></aside>
+        <main class="folder-content"><h2 id="folderHeading">文件夹</h2><div id="files"></div></main>
+    </div>
+    <footer class="folder-footer" id="folderStatus"></footer>
+</div>
+
+<div id="viewer" class="hidden">
+
+    <button id="closeBtn" onclick="closeViewer()">
+        ×
+    </button>
+
+    <img id="photo">
+
+</div>
+<div id="confirmBox" class="hidden">
+
+    <div id="confirmWindow">
+
+        <p id="confirmText"></p>
+
+        <button id="confirmYes">
+            辞旧念
+        </button>
+            
+        <button id="confirmNo">
+            勿执着
+        </button>
+
+    </div>
+
+</div>
+
+<div id="passwordBox" class="password-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="passwordTitle">
+    <form id="passwordForm" class="password-window">
+        <h2 id="passwordTitle">请输入密码</h2>
+        <label class="password-field" for="folderPassword">
+            <input id="folderPassword" type="password" maxlength="8" autocomplete="off" aria-describedby="passwordHint passwordError">
+            <button id="togglePassword" class="password-toggle" type="button" aria-label="显示密码" aria-pressed="false">
+                <span class="eye-icon" aria-hidden="true"></span>
+            </button>
+        </label>
+        <p id="passwordHint" class="password-hint">密码最多输入 8 位</p>
+        <p id="passwordError" class="password-error" role="alert" aria-live="polite"></p>
+        <div class="password-actions">
+            <button id="cancelPassword" type="button">取消</button>
+            <button class="password-submit" type="submit">确定</button>
+        </div>
+    </form>
+</div>
+
+<script src="script/folders.js?v=map-name-2"></script>
+<script src="script/photofolder.js?v=map-progress-1"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻找前辈的下落</title>
+    <link rel="stylesheet" href="style/QQ.css?v=history-top-gap-4">
+    <link rel="stylesheet" href="style/desktop.css?v=departure-exit-2">
+    <script src="script/game-config.js"></script>
+</head>
+<body>
+    <main id="desktop" aria-label="电脑桌面">
+        <div class="desktop-icons">
+            <button class="desktop-icon" data-app="qq"><span class="icon-picture">🐧<img src="figure/desktop-qq.png" alt="" onerror="this.hidden=true"></span><span>Penguin</span></button>
+            <button class="desktop-icon" data-app="photos"><span class="icon-picture">📁<img src="figure/desktop-photofolder.png" alt="" onerror="this.hidden=true"></span><span>文件夹</span></button>
+            <button class="desktop-icon" data-app="search"><span class="icon-picture">🔎<img src="figure/desktop-search.png" alt="" onerror="this.hidden=true"></span><span>search</span></button>
+        </div>
+        <button id="reset-progress" class="desktop-action reset-progress" type="button">清空进度</button>
+        <button id="departure-button" class="desktop-action departure-button" type="button">出发</button>
+        <div class="desktop-caption"><p>有些线索，藏在日常之中</p></div>
+    </main>
+    <section id="app-window" hidden aria-label="应用窗口">
+        <div id="app-frames"></div>
+    </section>
+    <dialog id="reset-confirm" class="reset-confirm" aria-labelledby="reset-confirm-title">
+        <form method="dialog">
+            <h2 id="reset-confirm-title">确认清空进度？</h2>
+            <p>所有开机之后的游戏进度都会被删除，此操作无法撤销。</p>
+            <div class="reset-confirm-actions">
+                <button value="cancel" autofocus>取消</button>
+                <button class="reset-confirm-submit" value="confirm">确认清空</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="departure-confirm" class="reset-confirm departure-confirm" aria-labelledby="departure-confirm-title">
+        <form method="dialog">
+            <h2 id="departure-confirm-title">尚未找到关键线索</h2>
+            <div id="departure-locked-view" class="reset-confirm-actions">
+                <button class="departure-confirm-exit" value="close" autofocus>继续寻找</button>
+            </div>
+            <div id="departure-choice-view" class="departure-choice-view" hidden>
+                <img class="departure-map" src="figure/map_choice.jpg" alt="标有 A 到 L 十二处地点的地图">
+                <div id="departure-choices" class="departure-choices" aria-label="地点选项"></div>
+                <p id="departure-feedback" class="departure-feedback" role="status" aria-live="polite"></p>
+                <div class="reset-confirm-actions departure-choice-actions">
+                    <button class="departure-confirm-exit" value="close">退出</button>
+                </div>
+            </div>
+            <div id="departure-success-view" class="departure-success-view" hidden>
+                <div class="reset-confirm-actions">
+                    <button class="departure-confirm-exit" value="close">退出</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="folder-password-dialog" class="folder-password-dialog" aria-labelledby="folder-password-title">
+        <form id="folder-password-form">
+            <h2 id="folder-password-title">文件夹已锁定</h2>
+            <p>请输入密码后查看文件夹内容</p>
+            <label class="desktop-password-field" for="desktop-folder-password">
+                <input id="desktop-folder-password" type="password" maxlength="8" autocomplete="off" aria-describedby="folder-password-hint folder-password-error" autofocus>
+                <button id="desktop-password-toggle" type="button" aria-label="显示密码" aria-pressed="false"><span class="desktop-eye-icon" aria-hidden="true"></span></button>
+            </label>
+            <p id="folder-password-hint" class="folder-password-hint">密码最多输入 8 位</p>
+            <p id="folder-password-error" class="folder-password-error" role="alert" aria-live="polite"></p>
+            <div class="folder-password-actions">
+                <button id="folder-password-cancel" type="button">取消</button>
+                <button class="folder-password-submit" type="submit">确定</button>
+            </div>
+        </form>
+    </dialog>
+    <footer class="taskbar">
+        <button id="show-desktop" type="button">▦ 桌面</button>
+        <button data-app="qq" type="button">Penguin <span id="qq-unread" hidden>●</span></button>
+        <button data-app="photos" type="button">📁 文件夹</button>
+        <button data-app="search" type="button">🔎 search</button>
+        <time id="desktop-clock"></time>
+    </footer>
+    <script src="script/desktop.js?v=penguin-name-1"></script>
+</body>
+</html>

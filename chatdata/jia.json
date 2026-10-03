@@ -1,0 +1,219 @@
+{
+    "id": "jia",
+    "name": "贾",
+    "type": "friend",
+    "messages": [],
+    "currentChoiceGroup": "choice_start",
+    "choiceGroups": {
+        "choice_start": [
+            {
+                "id": "jia_choice_1",
+                "text": "前辈好，我是淀粉的新人，XLPJ前辈一直联系不上，请问您知道些什么吗？",
+                "reply": "jia_reply_1",
+                "time": "2026/07/06"
+            }
+        ],
+        "after_1": [
+            {
+                "id": "jia_choice_2",
+                "text": "嗯…祝前辈合约攻略顺利…",
+                "reply": "jia_reply_2"
+            }
+        ],
+        "after_2": [
+            {
+                "id": "jia_choice_3",
+                "text": "谢谢，前辈还说了什么吗？",
+                "reply": "jia_reply_3"
+            }
+        ],
+        "after_3": [
+            {
+                "id": "jia_choice_4",
+                "text": "谢谢",
+                "reply": "jia_reply_4"
+            }
+        ],
+        "suspects": [
+            {
+                "id": "jia_suspect_1",
+                "label": "红龙",
+                "text": "难道是…红龙前辈？",
+                "reply": "jia_reply_suspect_1"
+            },
+            {
+                "id": "jia_suspect_2",
+                "label": "贾",
+                "text": "贾哥…我没看出你对J前辈…",
+                "reply": "jia_reply_suspect_2"
+            },
+            {
+                "id": "jia_suspect_3",
+                "label": "罗德狗德岛分狗",
+                "text": "难道是…岛前辈？",
+                "reply": "jia_reply_suspect_3"
+            },
+            {
+                "id": "jia_suspect_4",
+                "label": "神秘刺猬头",
+                "text": "难道是…Z前辈？",
+                "reply": "jia_reply_suspect_4"
+            },
+            {
+                "id": "jia_suspect_5",
+                "label": "雪",
+                "text": "难道是…雪前辈？",
+                "reply": "jia_reply_suspect_5"
+            },
+            {
+                "id": "jia_suspect_6",
+                "label": "那个人",
+                "text": "难道是…那个人？",
+                "reply": "jia_reply_suspect_6"
+            },
+            {
+                "id": "jia_suspect_7",
+                "label": "联合作案",
+                "text": "难道大家都在骗我？",
+                "reply": "jia_reply_suspect_7"
+            },
+            {
+                "id": "jia_suspect_8",
+                "label": "没有人害J哥",
+                "text": "不，我觉得没有人会陷害J哥",
+                "reply": "jia_reply_suspect_8"
+            }
+        ],
+        "closing": [
+            {
+                "id": "jia_closing",
+                "text": "嗯，我会找到J哥下落的"
+            }
+        ]
+    },
+    "replies": [
+        {
+            "id": "jia_reply_1",
+            "sender": "jia",
+            "text": "诶呀，看来这次合约又少一个对手",
+            "next_group": "after_1"
+        },
+        {
+            "id": "jia_reply_2",
+            "sender": "jia",
+            "text": "不逗你了，他前几天跟我念叨什么去雪原的事，我说那就是骗人的，他看起来还不信，害的我都没法享受和他的双人游戏时光了",
+            "next_group": "after_2"
+        },
+        {
+            "id": "jia_reply_3",
+            "messages": [
+                {
+                    "sender": "jia",
+                    "text": "说了些像邪教的东西，什么咒言什么神器，说是可以进入游戏世界"
+                },
+                {
+                    "sender": "jia",
+                    "text": "等J哥老了我真要给他卖保健品了"
+                }
+            ],
+            "next_group": "after_3"
+        },
+        {
+            "id": "jia_reply_4",
+            "messages": [
+                {
+                    "sender": "player",
+                    "text": "[小兔比心表情包]"
+                },
+                {
+                    "sender": "jia",
+                    "text": "你不会也信了吧？比起神鬼一类，你怎么不怀疑一下是遭人陷害呢？"
+                },
+                {
+                    "sender": "jia",
+                    "text": "你想想，J哥有没有与什么人有嫌隙？"
+                }
+            ],
+            "next_group": "suspects"
+        },
+        {
+            "id": "jia_reply_suspect_1",
+            "messages": [
+                { "sender": "jia", "text": "来自信任之人的背叛，最是伤人——真心错付，经年难愈" },
+                { "sender": "jia", "text": "倒是给我增添了一点同人思路" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_2",
+            "messages": [
+                { "sender": "jia", "text": "怎么会是我呢？我对J哥可是真心实意，而且要真是我我会告诉你吗？" },
+                { "sender": "jia", "text": "我最大的遗憾就是没能和J哥拿下双人冠军" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_3",
+            "messages": [
+                { "sender": "jia", "text": "111" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_4",
+            "messages": [
+                { "sender": "jia", "text": "J哥觊觎一哥之位已久，表面风平浪静，实则暗潮汹涌，权位之争，素来残忍" },
+                { "sender": "jia", "text": "倒是给我增添了一点同人思路" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_5",
+            "messages": [
+                { "sender": "jia", "text": "平日里勤勤恳恳的热情小伙，早就对指指点点的领导不满了，很现实的剧情" },
+                { "sender": "jia", "text": "倒是给我增添了一点同人思路" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_6",
+            "messages": [
+                { "sender": "jia", "text": "所谓恨海情天，你身如无根断木，浮沉于沧海，望着远远的天，不知何处可栖" },
+                { "sender": "jia", "text": "倒是给我增添了一点同人思路" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_7",
+            "messages": [
+                { "sender": "jia", "text": "所有人小小的恨意汇聚到一起，只需一点火星，便足以燃成燎原之火" },
+                { "sender": "jia", "text": "倒是给我增添了一点同人思路" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        },
+        {
+            "id": "jia_reply_suspect_8",
+            "messages": [
+                { "sender": "jia", "text": "年轻人总是愿意相信世界是美好的，总是对一切都充满热情与希望" },
+                { "sender": "jia", "text": "祝你能成长为能独当一面的攻略者吧" },
+                { "sender": "jia", "text": "哦对，这只是随口一提，不必当真" },
+                { "sender": "jia", "text": "你还挺有趣的，不愧是J哥的弟子。我能提供的线索就这些了，如果还有什么需要帮助的，直接问我就好" }
+            ],
+            "next_group": "closing"
+        }
+    ]
+}

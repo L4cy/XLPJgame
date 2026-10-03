@@ -1,0 +1,794 @@
+/* =====================
+   QQ空间
+===================== */
+
+
+.qzone-window{
+
+    position:absolute;
+
+    width:75%;
+
+    height:80%;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+
+    background:#f3f3f3;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+/* 顶部 */
+
+
+.qzone-header{
+
+    height:8%;
+
+    background:#12b7f5;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:20px;
+
+    position:relative;
+
+}
+
+
+
+/* 主体 */
+
+.qzone-body{
+
+    flex:1;
+
+    overflow:hidden;
+
+}
+
+
+
+.qzone-feed{
+
+    height:100%;
+
+    overflow-y:auto;
+
+    padding:2%;
+
+}
+
+
+
+/* 滚动条 */
+
+
+.qzone-feed::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+.qzone-feed::-webkit-scrollbar-thumb{
+
+    background:#aaa;
+
+    border-radius:10px;
+
+}
+
+
+
+/* 动态 */
+
+
+.qzone-post{
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:2%;
+
+    margin-bottom:2%;
+
+
+    display:block;
+
+}
+
+.qzone-post-header{
+    display:flex;
+    align-items:center;
+    width:100%;
+    gap:1.2%;
+    margin-bottom:1.2%;
+}
+
+.qzone-avatar-frame{
+    flex:0 0 4%;
+    width:4%;
+    aspect-ratio:1;
+    overflow:hidden;
+    border-radius:50%;
+    background:#edf1f5;
+}
+
+.qzone-avatar{
+    display:block;
+    width:100%;
+    height:100%;
+    margin:0;
+    object-fit:cover;
+}
+
+.qzone-identity{
+    display:flex;
+    min-width:0;
+    flex-direction:column;
+    justify-content:center;
+}
+
+
+
+.qzone-content{
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+
+
+.qzone-name{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#1683c8;
+
+}
+
+
+
+.qzone-time{
+
+    color:#999;
+
+    font-size:12px;
+
+    margin-top:.5%;
+
+}
+
+
+
+.qzone-text{
+
+    margin-top:2%;
+
+    line-height:1.6;
+
+    white-space:pre-line;
+
+}
+
+.qzone-mention{
+
+    color:#1683c8;
+
+    font-weight:500;
+
+}
+
+
+
+.qzone-image{
+
+    margin-top:2%;
+
+    width:45%;
+
+    max-width:100%;
+
+    border-radius:8px;
+
+    cursor:zoom-in;
+
+    transition:filter .2s ease;
+
+}
+
+.qzone-image:hover{
+
+    filter:brightness(.92);
+
+}
+
+.qzone-image:focus-visible{
+
+    outline:3px solid rgba(18,183,245,.45);
+
+    outline-offset:3px;
+
+}
+
+.qzone-image-preview{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7% 4% 4%;
+
+    box-sizing:border-box;
+
+    background:rgba(0,0,0,.88);
+
+}
+
+.qzone-image-preview[hidden]{
+
+    display:none;
+
+}
+
+.qzone-image-preview-content{
+
+    display:block;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    box-shadow:0 8px 36px rgba(0,0,0,.4);
+
+}
+
+.qzone-image-preview-close{
+
+    position:absolute;
+
+    top:2%;
+
+    right:2%;
+
+    width:3.5%;
+
+    aspect-ratio:1;
+
+    padding:0;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.14);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:34px;
+
+    font-weight:300;
+
+    line-height:40px;
+
+}
+
+.qzone-image-preview-close:hover,
+.qzone-image-preview-close:focus-visible{
+
+    background:rgba(255,255,255,.28);
+
+    outline:none;
+
+}
+
+body.qzone-preview-open{
+
+    overflow:hidden;
+
+}
+
+
+
+/* 点赞评论 */
+
+
+.qzone-actions{
+
+    margin-top:2%;
+
+    border-top:1px solid #eee;
+
+    padding-top:1%;
+
+}
+
+
+.qzone-actions button{
+
+    border:none;
+
+    background:none;
+
+    color:#777;
+
+    cursor:pointer;
+
+    margin-right:3%;
+
+}
+
+
+
+.qzone-actions button:hover{
+
+    color:#12b7f5;
+
+}
+
+
+
+/* 底部 */
+
+
+.qzone-footer{
+
+    height:9%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    padding-right:2%;
+
+}
+
+
+
+.qzone-send-btn{
+
+    width:12%;
+
+    height:65%;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#12b7f5;
+
+    color:white;
+
+}
+
+
+.qzone-send-btn:disabled{
+
+    background:#aaa;
+
+    cursor:not-allowed;
+
+}
+
+
+.qzone-close{
+
+    position:absolute;
+
+    right:2%;
+
+    display:grid;
+
+    width:3%;
+
+    aspect-ratio:1;
+
+    place-items:center;
+
+    padding:0;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#eee;
+
+    color:#555;
+
+    font-size:24px;
+
+    font-weight:300;
+
+    line-height:1;
+
+    text-align:center;
+
+    transition:.2s;
+
+}
+.qzone-close:hover{
+
+    background:#ff4d4f;
+
+    color:white;
+
+}
+.article-card,
+.wechat-card{
+
+
+    margin-top:2%;
+
+
+    border-radius:12px;
+
+
+    overflow:hidden;
+
+
+    display:block;
+
+    position:relative;
+
+    background:#fafafa;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.article-card:hover,
+.wechat-card:hover{
+
+
+    transform:translateY(-3%);
+
+
+}
+
+
+
+.article-title{
+
+
+    padding:2%;
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    color:#222;
+
+
+}
+
+
+
+.article-desc{
+
+
+    padding:0 2% 1.5%;
+
+
+    color:#666;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+.article-link{
+
+
+    padding:1.5% 2%;
+
+
+    color:#1677ff;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+/* 微信公众号文章样式 */
+
+
+.wechat-card{
+
+
+    margin-top:2%;
+
+    background:#f5f5f5;
+
+
+    border-radius:8px;
+
+    border:1px solid #e8e8e8;
+
+    border-left:4px solid #e84a3c;
+
+
+    overflow:hidden;
+
+
+    cursor:pointer;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+
+
+}
+
+.wechat-card:focus-visible{
+    outline:3px solid rgba(18,183,245,.35);
+    outline-offset:3px;
+}
+
+
+.wechat-cover{
+
+
+    width:100%;
+
+    height:auto;
+    aspect-ratio:3 / 1;
+
+    object-fit:cover;
+
+
+}
+
+
+
+.wechat-info{
+
+    padding:2% 2.5% 1%;
+
+}
+
+
+
+.wechat-title{
+
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    line-height:1.5;
+
+    color:#222;
+
+
+}
+
+
+
+.wechat-summary{
+
+
+    margin-top:1%;
+
+    color:#666;
+
+    font-size:14px;
+
+    line-height:1.75;
+
+}
+
+
+
+.wechat-source{
+
+
+    margin-top:1.5%;
+
+    color:#999;
+
+    font-size:13px;
+
+    padding-bottom:.5%;
+
+}
+
+.wechat-read{
+    display:block;
+    margin:0 2.5%;
+    padding:1.5% 0 2%;
+    border-top:1px solid #e9e9e9;
+    color:#777;
+    font-size:13px;
+}
+
+.wechat-read span{
+    float:right;
+    color:#aaa;
+    font-size:18px;
+    line-height:14px;
+}
+.qq-link{
+
+    color:#0066cc;
+
+    text-decoration:underline;
+
+    cursor:pointer;
+
+}
+
+
+.qq-link:hover{
+
+    color:#003399;
+
+}
+/* 评论区 */
+
+.qzone-comments{
+
+
+    margin-top:2%;
+
+
+    padding:1.5%;
+
+
+    background:#f5f5f5;
+
+
+    border-radius:6px;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+.comment-item{
+
+
+    margin-bottom:1%;
+
+
+    line-height:1.5;
+
+
+}
+
+
+
+.comment-name{
+
+
+    color:#3366cc;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+.comment-text{
+
+
+    color:#333;
+
+
+}
+
+
+
+.comment-item.reply{
+
+
+    padding-left:3%;
+
+
+}
+
+.comment-omitted{
+    color:#999;
+    font-size:13px;
+}
+
+.qzone-loading{
+    padding:5% 3%;
+    color:#888;
+    text-align:center;
+}
+
+.qzone-error{
+    color:#c84b45;
+}
+
+
+
+.comment-img{
+
+
+    width:9%;
+
+
+    height:auto;
+    aspect-ratio:1;
+
+
+    object-fit:contain;
+
+
+    vertical-align:middle;
+
+
+}
+

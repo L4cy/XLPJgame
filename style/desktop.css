@@ -1,0 +1,69 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Microsoft YaHei", Arial, sans-serif; color: #fff; background: #172c43; }
+[hidden] { display: none !important; }
+#desktop { position: fixed; inset: 0 0 7%; background: url("../figure/screen.png") center / cover, radial-gradient(ellipse at 75% 30%, #487781, transparent 65%), linear-gradient(135deg, #12243e, #285469); }
+.desktop-icons { display: flex; flex-direction: column; gap: 4%; padding: 3% 2%; width: 10%; height: 65%; }
+.desktop-icon { display: flex; width: 100%; flex-direction: column; align-items: center; border: 1px solid transparent; border-radius: 6px; padding: 8%; background: transparent; color: white; cursor: pointer; font: inherit; text-align: center; text-shadow: 0 2px 4px #000; }
+.desktop-icon:hover, .desktop-icon:focus-visible { background: #ffffff24; border-color: #ffffff5c; }
+.desktop-icon > span { display: block; width: 100%; text-align: center; }
+.desktop-icon .icon-picture { position: relative; display: flex; width: 55%; aspect-ratio: 1; align-items: center; justify-content: center; margin: 0 auto 8%; font-size: 260%; line-height: 1; }
+.desktop-icon[data-app="qq"] .icon-picture { transform: translateX(-4%); }
+.icon-picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.desktop-action { position: absolute; min-width: 7%; padding: .7% 1.2%; border: 1px solid #ffffff5c; border-radius: 6px; color: #fff; cursor: pointer; font: inherit; box-shadow: 0 4px 14px #00000028; }
+.reset-progress { top: 3%; right: 2%; background: #102438b8; }
+.reset-progress:hover, .reset-progress:focus-visible { background: #ffffff28; border-color: #ffffffa8; }
+.departure-button { right: 2%; bottom: 3%; background: #ff6565d9; border-color: #acbaff8c; }
+.departure-button:hover, .departure-button:focus-visible { background: #ff9090; border-color: #fe4545; }
+.reset-confirm { width: 30%; padding: 2%; border: 1px solid #d8e2eb; border-radius: 10px; background: #fff; color: #263746; box-shadow: 0 18px 60px #0000005c; }
+.reset-confirm::backdrop { background: #0815229c; }
+.reset-confirm h2 { margin: 0 0 12px; font-size: 20px; }
+.reset-confirm p { margin: 0; color: #5b6874; font-size: 14px; line-height: 1.7; }
+.reset-confirm-actions { display: flex; justify-content: flex-end; gap: 3%; margin-top: 6%; }
+.reset-confirm-actions button { min-width: 24%; padding: 2.5% 4%; border: 1px solid #c8d2dc; border-radius: 5px; background: #f3f6f8; color: #334454; cursor: pointer; font: inherit; }
+.reset-confirm-actions button:hover, .reset-confirm-actions button:focus-visible { background: #e6edf2; }
+.reset-confirm-actions .reset-confirm-submit { border-color: #d94a4a; background: #e55353; color: #fff; }
+.reset-confirm-actions .reset-confirm-submit:hover, .reset-confirm-actions .reset-confirm-submit:focus-visible { background: #c94040; }
+.reset-confirm-actions .departure-confirm-exit { border-color: #fe4545; background: #ff6565; color: #fff; }
+.reset-confirm-actions .departure-confirm-exit:hover, .reset-confirm-actions .departure-confirm-exit:focus-visible { background: #d94a4a; border-color: #c83c3c; }
+.departure-confirm.departure-map-mode .departure-confirm-exit { min-width:10%; padding:1% 2%; }
+.departure-confirm.departure-map-mode { width: 55%; max-height: 92%; overflow: auto; }
+.departure-choice-view { margin-top: 3%; }
+.departure-map { display: block; width: 100%; max-height: 52%; border: 1px solid #d8e2eb; border-radius: 7px; object-fit: contain; background: #fff; }
+.departure-choices { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.5%; margin-top: 3%; }
+.departure-choice { min-height: 40px; border: 1px solid #b8c8d6; border-radius: 6px; background: #f3f6f8; color: #263746; cursor: pointer; font: inherit; font-size: 16px; font-weight: 600; }
+.departure-choice:hover, .departure-choice:focus-visible { border-color: #4a90e2; background: #e7f2ff; outline: none; box-shadow: 0 0 0 2px #4a90e233; }
+.departure-confirm .departure-feedback { min-height: 4%; margin-top: 2%; color: #c43f3f; text-align: center; font-size: 15px; font-weight: 600; }
+.departure-choice-actions { margin-top: 1%; }
+.departure-success-view { padding-top: 4px; }
+.folder-password-dialog { width: 28%; padding: 2%; border: 1px solid #d8e2eb; border-radius: 12px; background: #fff; color: #2e4154; box-shadow: 0 20px 60px #00000070; }
+.folder-password-dialog::backdrop { background: #081522a8; backdrop-filter: blur(3px); }
+.folder-password-dialog h2 { margin: 0 0 8px; font-size: 20px; }
+.folder-password-dialog > form > p { margin: 0 0 20px; color: #677786; font-size: 13px; }
+.desktop-password-field { display: flex; align-items: center; height: 44px; border: 1px solid #b9c8d5; border-radius: 7px; transition: border-color .2s ease, box-shadow .2s ease; }
+.desktop-password-field:focus-within { border-color: #4a90e2; box-shadow: 0 0 0 3px #4a90e229; }
+#desktop-folder-password { flex: 1; min-width: 0; height: 100%; padding: 0 12px; border: 0; outline: 0; background: transparent; color: #25384a; font: 16px/1 "Microsoft YaHei", Arial, sans-serif; letter-spacing: .08em; }
+#desktop-folder-password::-ms-reveal, #desktop-folder-password::-ms-clear { display: none; }
+#desktop-folder-password::-webkit-credentials-auto-fill-button { visibility: hidden; display: none !important; pointer-events: none; }
+#desktop-password-toggle { display: grid; place-items: center; width: 44px; height: 100%; padding: 0; border: 0; background: transparent; color: #708495; cursor: pointer; }
+.desktop-eye-icon { position: relative; display: block; width: 20px; height: 13px; border: 2px solid currentColor; border-radius: 50% / 60%; }
+.desktop-eye-icon::after { content: ""; position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: translate(-50%, -50%); }
+#desktop-password-toggle[aria-pressed="true"] .desktop-eye-icon::before { content: ""; position: absolute; top: 4px; left: -4px; z-index: 1; width: 24px; height: 2px; background: currentColor; box-shadow: 0 0 0 2px #fff; transform: rotate(-35deg); }
+.folder-password-dialog .folder-password-hint, .folder-password-dialog .folder-password-error { min-height: 18px; margin: 7px 2px 0; font-size: 12px; }
+.folder-password-dialog .folder-password-hint { color: #8796a3; }
+.folder-password-dialog .folder-password-error { margin-top: 0; color: #d44949; }
+.folder-password-actions { display: flex; justify-content: flex-end; gap: 3%; margin-top: 4%; }
+.folder-password-actions button { min-width: 24%; padding: 2.5% 5%; border: 1px solid #c9d5df; border-radius: 6px; background: #fff; color: #455b6e; font: inherit; cursor: pointer; }
+.folder-password-actions .folder-password-submit { border-color: #4a90e2; background: #4a90e2; color: #fff; }
+.folder-password-actions button:hover, .folder-password-actions button:focus-visible { filter: brightness(.96); }
+.desktop-caption { position: absolute; right: 8%; bottom: 12%; color: #ffffff85; text-align: right; pointer-events: none; }
+.desktop-caption > span { font-size: clamp(24px, 4vw, 48px); letter-spacing: 6px; }
+.desktop-caption p { font-size: 16px; letter-spacing: 3px; }
+.taskbar { position: fixed; inset: auto 0 0; height: 7%; display: flex; gap: .5%; align-items: center; padding: .5% 1%; background: #102438ed; border-top: 1px solid #ffffff25; z-index: 100; }
+.taskbar button { background: #ffffff12; color: #fff; border: 1px solid #ffffff20; border-radius: 4px; padding: .6% 1%; cursor: pointer; font: inherit; }
+.taskbar button:hover, .taskbar button.active { background: #ffffff2c; }
+#qq-unread { color: #ff6868; }
+#desktop-clock { margin-left: auto; text-align: right; font-size: 12px; white-space: pre-line; }
+#app-window { position: fixed; inset: 0 0 7%; background: transparent; }
+#app-frames { position: absolute; inset: 0; }
+.app-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; }
+.qq-toast-container { bottom: 9%; }

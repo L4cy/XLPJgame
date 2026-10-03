@@ -1,0 +1,222 @@
+{
+    "id": "ve",
+    "name":"罗德狗德岛分狗",
+    "type": "friend",
+
+    "messages": [
+        {
+            "id":"ve_history_20250304_1",
+            "sender":"player",
+            "text":"岛哥有点厉害，这就把现在的密码加个我的名字当Key",
+            "status":"history",
+            "time":"2025/03/04",
+            "unread":false
+        },
+        {
+            "id":"ve_history_20250304_2",
+            "sender":"ve",
+            "text":"哈哈哈，臣服于我吧！",
+            "status":"history",
+            "unread":false
+        },
+        {
+            "id":"ve_history_20250304_3",
+            "sender":"ve",
+            "text":"你这就把密码告诉我了吗？那我岂不是能看J哥的小秘密了？",
+            "status":"history",
+            "unread":false
+        },
+        {
+            "id":"ve_history_20250304_4",
+            "sender":"ve",
+            "text":"哦不对，你现在密码是多少来着？",
+            "status":"history",
+            "unread":false
+        },
+        {
+            "id":"ve_history_20250304_5",
+            "sender":"player",
+            "text":"若至一个。",
+            "status":"history",
+            "unread":false
+        },
+        {
+            "id":1,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":2
+        },{
+            "id":2,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":3
+        },{
+            "id":3,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":4
+        },{
+            "id":4,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":5
+        },{
+            "id":5,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":6
+        },
+        {
+            "id":6,
+            "sender":"ve",
+            "text":"[说了一些合约思路]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":7
+        },
+
+
+        {
+            "id":7,
+            "sender":"player",
+            "text":"[给出了一些建议]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":8
+        },
+        {
+            "id":8,
+            "sender":"ve",
+            "text":"[回复了一个表情包]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":9
+        },
+        {
+            "id":9,
+            "sender":"ve",
+            "text":"[回复了一个表情包]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false
+        },
+        {
+            "id":10,
+            "sender":"ve",
+            "text":"[回复了一个表情包]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":11
+        },
+        {
+            "id":11,
+            "sender":"ve",
+            "text":"[回复了一个表情包]",
+            "status":"history",
+            "time":"2026/07/02",
+            "unread":false,
+            "next_id":12
+        },
+
+        {
+            "id":12,
+            "sender":"ve",
+            "text":"神秘大懒兔，新约都开了还在睡觉",
+            "status":"history",
+            "time":"2026/07/04",
+            "unread":true,
+            "next":"choice_start"
+        }
+
+    ],
+
+    "choiceGroups":{
+        "choice_start":[
+
+            {
+                "id":"choice_1",
+                "text":"岛前辈，我是新来的打灰小伙，J前辈好像消失了，他之前有和你联系过吗？",
+                "reply":13,
+                "time":"2026/07/06"
+            },
+
+            {
+                "id":"choice_2",
+                "text":"诶呀，来了来了",
+                "reply":14,
+                "time":"2026/07/06"
+            }
+
+        ],
+        "after_1":[
+            {
+                "id":"choice_3",
+                "text":"很遗憾，我真的不知道前辈去哪了。前辈的笔记本遗留在红龙前辈这了，我和红龙前辈都在找前辈的下落",
+                "reply":15,
+                "time":"2026/07/06"
+            }
+
+        ],
+        "after_2":[
+            {
+                "id":"choice_4",
+                "text":"测试111",
+                "reply":16,
+                "time":"2026/07/06"
+            }
+        ]
+    },
+
+
+    "replies":[
+
+        {
+            "id":13,
+            "sender":"ve",
+            "text":"真的吗？你别装傻了，你骗不到我的，快来会议",
+            "next_group":"after_1"
+        },
+
+
+        {
+            "id":14,
+            "sender":"ve",
+            "text":"快进会议，[说了一些合约内容]",
+            "next_group":"after_2"
+        },
+
+
+        {
+            "id":15,
+            "sender":"ve",
+            "text":"哦，我想起来了，你前两天跟我说过。"
+        },
+        
+        {
+            "id":16,
+            "sender":"ve",
+            "text":"测试222"
+        }
+
+    ]
+
+}

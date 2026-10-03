@@ -1,0 +1,236 @@
+{
+    "id": "dragon",
+    "name": "红龙",
+    "type": "friend",
+    "messages": [
+        {
+            "id": 1,
+            "sender": "player",
+            "text": "龙哥你这屋住的好舒服呀，躺在客厅沙发上早上自然光又亮下午又照不到，玩游戏好爽啊",
+            "time": "2024/XX/XX",
+            "timeGroup": "2024-unknown-1",
+            "unread": false
+        },
+        {
+            "id": 2,
+            "sender": "player",
+            "text": "而且这虽然挨着街，平时人也不多，晚上还挺安静的，羡慕羡慕",
+            "unread": false
+        },
+        {
+            "id": 3,
+            "sender": "dragon",
+            "text": "我都没注意到，喜欢的话可以常来玩",
+            "unread": false
+        },
+        {
+            "id": 4,
+            "sender": "player",
+            "text": "诶呀我要上班的呀",
+            "unread": false
+        },
+        {
+            "id": 5,
+            "sender": "player",
+            "text": "放假有空就来摸摸小猫",
+            "unread": false
+        },
+        {
+            "id": 6,
+            "sender": "dragon",
+            "text": "什么时候我也上你那去做做客",
+            "unread": false
+        },
+        {
+            "id": 7,
+            "sender": "dragon",
+            "text": "对面小区一楼有一排小吃摊，你想去吗？",
+            "unread": false
+        },
+        {
+            "id": 8,
+            "sender": "player",
+            "text": "好呀，等你回来",
+            "unread": false
+        },
+        {
+            "id": 9,
+            "sender": "player",
+            "text": "[小兔吃草表情包]",
+            "unread": false
+        },
+        {
+            "id": 10,
+            "sender": "player",
+            "text": "龙哥我导航软脚了，我现在在一个…什么什么公司这，怎么走呀",
+            "time": "2024/XX/XX",
+            "timeGroup": "2024-unknown-2",
+            "unread": false
+        },
+        {
+            "id": "dragon-history-xlpj-location",
+            "sender": "player",
+            "text": "对面有个泳池，在小区后面",
+            "unread": false
+        },
+        {
+            "id": 11,
+            "sender": "player",
+            "text": "[语音通话已取消]",
+            "unread": false
+        },
+        {
+            "id": 12,
+            "sender": "dragon",
+            "text": "你附近应该有座桥，你先过桥，能看到一个广场，然后左转有个公园，公园前面就到小区侧门了",
+            "unread": false
+        },
+        {
+            "id": 13,
+            "sender": "dragon",
+            "text": "之后应该知道怎么走了吧",
+            "unread": false
+        },
+        {
+            "id": 14,
+            "sender": "player",
+            "text": "这个喷泉广场？",
+            "unread": false
+        },
+        {
+            "id": 15,
+            "sender": "player",
+            "text": "[图片已过期]",
+            "unread": false
+        },
+        {
+            "id": 16,
+            "sender": "dragon",
+            "text": "对",
+            "unread": false
+        },
+        {
+            "id": 17,
+            "sender": "player",
+            "text": "还是得画张地图比较保险",
+            "unread": false
+        },
+        {
+            "id": 18,
+            "sender": "dragon",
+            "text": "兄弟原来你也不认路，哈哈",
+            "unread": false
+        },
+        {
+            "id": 19,
+            "sender": "player",
+            "text": "龙哥帮我把我电脑文件夹里的xxx文件传给我一下，我在外面",
+            "time": "2024/XX/XX",
+            "timeGroup": "2024-unknown-3",
+            "unread": false
+        },
+        {
+            "id": 20,
+            "sender": "dragon",
+            "text": "密码？",
+            "unread": false
+        },
+        {
+            "id": 21,
+            "sender": "player",
+            "text": "我生日",
+            "unread": false
+        },
+        {
+            "id": 22,
+            "sender": "dragon",
+            "text": "文件夹的呢？",
+            "unread": false
+        },
+        {
+            "id": 23,
+            "sender": "player",
+            "text": "也是",
+            "unread": false
+        },
+        {
+            "id": 24,
+            "sender": "dragon",
+            "text": "这也太不安全了吧兄弟，要不改成我的？他们肯定猜不到",
+            "unread": false
+        },
+        {
+            "id": 25,
+            "sender": "player",
+            "text": "…好",
+            "unread": false
+        },
+        {
+            "id": 26,
+            "sender": "dragon",
+            "text": "[文件已过期]",
+            "unread": false
+        },
+        {
+            "id": 27,
+            "sender": "dragon",
+            "text": "我刚回来，你回去了吗",
+            "time": "2026/07/05",
+            "unread": true
+        },
+        {
+            "id": 28,
+            "sender": "dragon",
+            "text": "你电脑忘带了",
+            "unread": true
+        }
+    ],
+    "currentChoiceGroup": "choice_start",
+    "choiceGroups": {
+        "choice_start": [
+            {
+                "id": "dragon_choice_1",
+                "text": "前辈，你回来的时候有什么异常吗？",
+                "reply": "dragon_reply_1",
+                "time": "2026/07/06"
+            }
+        ],
+        "after_1": [
+            {
+                "id": "dragon_choice_2",
+                "text": "谢谢前辈，前辈的两只小猫也都很可爱",
+                "reply": "dragon_reply_2"
+            }
+        ]
+    },
+    "replies": [
+        {
+            "id": "dragon_reply_1",
+            "messages": [
+                {
+                    "sender": "dragon",
+                    "text": "嗯，他1号说想来这边玩几天，我正巧有事1号晚上出去了，托他照顾一下小猫，看起来在我离开之后他换过食物和猫砂"
+                },
+                {
+                    "sender": "dragon",
+                    "text": "哦对，我问八万之前那个哥哥去哪了，她一直拍客厅窗户，是不是往那边走了？八万还挺聪明的兄弟，不像某只……"
+                },
+                {
+                    "sender": "dragon",
+                    "text": "也问问别人吧"
+                }
+            ],
+            "next_group": "after_1"
+        },
+        {
+            "id": "dragon_reply_2",
+            "messages": [
+                {
+                    "sender": "system",
+                    "type": "hint",
+                    "text": "提示：小猫只能提供大致的方位，且J哥不能飞哦，拐过弯以后，小猫就看不见啦"
+                }
+            ]
+        }
+    ]
+}

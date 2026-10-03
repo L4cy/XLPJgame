@@ -1,0 +1,218 @@
+{
+    "posts": [
+        {
+            "id": "dragon-friends-from-afar-2024",
+            "author": "红龙",
+            "avatar": "figure/avatar/dragon.png",
+            "time": "2024-X-X",
+            "text": "有朋自远方来",
+            "image": {
+                "src": "./figure/llttt.png",
+                "alt": "朋友来访合照"
+            },
+            "actions": {
+                "likes": 83,
+                "comments": 12
+            },
+            "commentList": [
+                {
+                    "author": "某位有文化的淀粉组员",
+                    "text": "龙哥会古文了喔？"
+                },
+                {
+                    "author": "红龙",
+                    "text": "哈哈，我也略懂一点诗词",
+                    "reply": true
+                },
+                
+                {
+                    "author": "XLPJ",
+                    "text": "龙哥的大豪宅住着真舒服"
+                },
+                {
+                    "author": "某位磕到桌子的淀粉组员",
+                    "text": "ttt",
+                    "reply": true
+                },
+                {
+                    "author": "红龙",
+                    "text": "常来做客！",
+                    "reply": true
+                },
+                {
+                    "type": "omitted",
+                    "text": "[省略7条评论]"
+                }
+            ]
+        },
+        {
+            "id": "xlpj-food-at-dragon-home-2024",
+            "author": "XLPJ",
+            "avatar": "./figure/avatar/xlpj.png",
+            "time": "2024-X-X",
+            "text": "盘子大大菜品香香 @红龙",
+            "image": {
+                "src": "./figure/food.jpg",
+                "alt": "餐桌上的菜品"
+            },
+            "actions": {
+                "likes": 121,
+                "comments": 21
+            },
+            "commentList": [
+                {
+                    "author": "雪",
+                    "text": "J大哥测评做完了吗就在这吃吃吃"
+                },
+                {
+                    "author": "XLPJ",
+                    "text": "嗨呀这不是有勤劳的小雪嘛",
+                    "reply": true
+                },
+                {
+                    "author": "雪",
+                    "text": "二师兄还在打素材快去夸夸他",
+                    "reply": true
+                },
+                {
+                    "author": "红龙",
+                    "text": "[星星眼表情包]"
+                },
+                {
+                    "author": "XLPJ",
+                    "text": "[小兔吃草表情包]",
+                    "reply": true
+                },
+                {
+                    "type": "omitted",
+                    "text": "[省略16条评论]"
+                }
+            ]
+        },
+        {
+            "id": "ve-aes-tool",
+            "author": "罗德狗德岛分狗",
+            "avatar": "./figure/avatar/",
+            "time": "2025-03-04",
+            "text": "学！vibe coding了一个密码生成小工具，\n这下不怕所有账号都是同一个密码了，哈哈",
+            "link": {
+                "href": "AES.html",
+                "label": "点击链接"
+            },
+            "article": {
+                "href": "AES_intro.html",
+                "title": "AES：藏在数字生活背后的“加密锁”",
+                "summary": "从一段明文到一串看不懂的密文：用通俗的方式读懂 AES 的诞生、原理与日常应用。",
+                "source": "小L学密码 · 密码学入门 · 约 6 分钟"
+            },
+            "actions": {
+                "likes": 43,
+                "comments": 4
+            },
+            "commentList": [
+                {
+                    "author": "XLPJ",
+                    "text": "你还会这个？"
+                },
+                {
+                    "author": "罗德狗德岛分狗",
+                    "text": "我可是罗啊！",
+                    "reply": true
+                },
+                {
+                    "author": "雪",
+                    "text": "都什么年代的加密方式了"
+                },
+                {
+                    "author": "罗德狗德岛分狗",
+                    "text": "你懂个p[小陈生气表情包]",
+                    "reply": true
+                }
+            ]
+        },
+        {
+            "id": "dragon-birthday-2026",
+            "author": "红龙",
+            "avatar": "figure/avatar/dragon.png",
+            "time": "2026-02-10",
+            "text": "又老了一岁，谢谢大家一年来的支持！期待新一年的肉鸽",
+            "actions": {
+                "likes": 325,
+                "comments": 59
+            },
+            "commentList": [
+                {
+                    "author": "XLPJ",
+                    "text": "龙哥生日快乐呀"
+                },
+                {
+                    "author": "红龙",
+                    "text": "谢谢XL",
+                    "reply": true
+                },
+                {
+                    "author": "XLPJ",
+                    "text": "诶呀叫我小L就好啦",
+                    "reply": true
+                },
+                {
+                    "author": "神秘刺猬头",
+                    "text": "逢君悬弧之辰，谨祝景福日新、鹤算长延；新岁清欢常伴，所愿皆得圆成。"
+                },
+                {
+                    "author": "红龙",
+                    "text": "谢谢Z哥，但我看不懂啊",
+                    "reply": true
+                },
+                {
+                    "author": "熊猫食物",
+                    "text": "龙哥知道Z哥在夸你就行了",
+                    "reply": true
+                },
+                {
+                    "type": "omitted",
+                    "text": "[省略53条评论]"
+                }
+            ]
+        },
+        {
+            "id": "xlpj-birthday-2026",
+            "author": "XLPJ",
+            "avatar": "./figure/avatar/xlpj.png",
+            "time": "2026-06-19",
+            "text": "请宝贝们吃🍰呀",
+            "image": {
+                "src": "./figure/qzone/xlpj-birthday-cake.jpg",
+                "alt": "生日蛋糕照片"
+            },
+            "actions": {
+                "likes": 799,
+                "comments": 86
+            },
+            "commentList": [
+                {
+                    "author": "红龙",
+                    "text": "生日快乐阿L"
+                },
+                {
+                    "author": "XLPJ",
+                    "text": "谢谢龙哥呀",
+                    "reply": true
+                },
+                {
+                    "author": "贾哥",
+                    "text": "J宝贝生日快乐，许愿和你一起拿个冠军"
+                },
+                {
+                    "author": "A1",
+                    "text": "J哥生日快乐"
+                },
+                {
+                    "type": "omitted",
+                    "text": "[省略82条评论]"
+                }
+            ]
+        }
+        
+    ]
+}

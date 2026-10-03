@@ -1,0 +1,55 @@
+{
+    "clues":[
+        "红龙"
+    ],
+
+    "secrets":[
+        {
+            "keyword":"血狼破军",
+            "password":"MqkvMfl0pug1PwTmR0TwTzq62BOgVnGPJyUtbDzFEqnshqJkimfuojYxZ5PKo7N1"
+        },
+        {
+            "keyword":"龙哥哥今天又鸽了",
+            "password":"JKt/4tIhcV287WT9LsMSV4SPTCnkGLr6JnkUUGDttx1dAgxpduPJpKVXE+H/XmgC"
+        },
+        {
+            "keyword":"罗德岛德狗分岛",
+            "password":"8NaKNwc7AbcLCHr+XGt28EeE4lGwJrzD+30mSS5f8Xie9b0HdM9EaCwW6LA4W8PI"
+        },
+        {
+            "keyword":"反季雪",
+            "password":"3+3J75pYEWNGC963gfh5oJLX+sTOM9RAbqawL0G92DRQirAtSWTG344fkbWwQeA7"
+        }
+    ],
+
+    "contents":[
+        {
+        "keyword":"红龙",
+
+        "results":[
+
+            {
+            "title":"红龙人物档案",
+            "description":"人物基础资料",
+            "url":"https://prts.wiki/w/%E9%A6%96%E9%A1%B5"
+            },
+
+
+            {
+            "title":"红龙聊天记录",
+            "description":"QQ聊天内容",
+            "url":"pages/chat_red.html"
+            },
+
+
+            {
+            "title":"红龙相关新闻",
+            "description":"外部报道",
+            "url":"https://zh.wikipedia.org/wiki/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F"
+            }
+
+        ]
+
+}
+    ]
+}
