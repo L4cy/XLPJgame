@@ -3,7 +3,8 @@ window.GAME_CONFIG = Object.freeze({ RESET_ON_REFRESH: false });
 window.GAME_PROGRESS_KEYS = Object.freeze([
     "readStatus",
     "gameChatSave",
-    "photo_folder_state"
+    "photo_folder_state",
+    "folder_unlocked"
 ]);
 
 // 只有整个桌面刷新才重置，切换应用、返回桌面、加载 iframe 均不重置。

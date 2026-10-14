@@ -178,7 +178,8 @@ function openChat(conversation){
     currentConversation = conversation;
     // 如果之前加载过，直接使用缓存
 
-    if(chatCache[conversation.id]){
+    if(chatCache[conversation.id] &&
+        (conversation.id !== "dragon" || chatCache[conversation.id].scriptVersion === 2)){
 
     currentChatData =
         chatCache[conversation.id];
@@ -358,7 +359,33 @@ function createMessage(msg){
 
     const bubble = document.createElement("div");
     bubble.className = "bubble";
-    bubble.textContent = msg.text;
+    if(msg.type === "voice"){
+        bubble.classList.add("voice-bubble");
+        const voice = document.createElement("div");
+        voice.className = "chat-voice";
+        voice.setAttribute("aria-label", `语音 ${msg.duration} 秒`);
+        const icon = document.createElement("span");
+        icon.className = "chat-voice-icon";
+        icon.setAttribute("aria-hidden", "true");
+        const duration = document.createElement("span");
+        duration.className = "chat-voice-duration";
+        duration.textContent = `${msg.duration}″`;
+        voice.append(icon, duration);
+        const transcript = document.createElement("div");
+        transcript.className = "chat-voice-transcript";
+        transcript.textContent = msg.text;
+        bubble.append(voice, transcript);
+    }else if(msg.hint){
+        const text = document.createElement("span");
+        text.textContent = msg.text;
+        const hint = document.createElement("span");
+        hint.className = "chat-inline-hint";
+        hint.textContent = msg.hint;
+        text.appendChild(hint);
+        bubble.appendChild(text);
+    }else{
+        bubble.textContent = msg.text;
+    }
     div.appendChild(bubble);
 
     area.appendChild(div);
@@ -817,15 +844,31 @@ function saveChatProgress(id){
 
 function loadChat(id) {
     if (chatLoads.has(id)) return chatLoads.get(id);
-    const loading = (chatCache[id] ? Promise.resolve(chatCache[id]) :
+    const saved = chatCache[id];
+    const refreshDragon = id === "dragon" && saved && saved.scriptVersion !== 2;
+    const loading = (saved && !refreshDragon ? Promise.resolve(saved) :
         fetch(`chatdata/${id}.json`).then(response => {
             if (!response.ok) throw new Error("聊天数据不存在");
             return response.json();
         })).then(data => {
+            if(refreshDragon){
+                const savedMessages = saved.messages || [];
+                data.messages = data.messages.map(message => {
+                    const previous = savedMessages.find(item => item.id === message.id);
+                    return previous ? { ...message, unread: previous.unread } : message;
+                }).concat(savedMessages.filter(message => message.id == null).map(message =>
+                    message.type === "hint"
+                        ? { ...message, text: data.replies.find(reply => reply.id === "dragon_reply_2").messages[0].text }
+                        : message
+                ));
+                data.currentChoiceGroup = saved.currentChoiceGroup || data.currentChoiceGroup;
+                if(saved.pendingReply) data.pendingReply = saved.pendingReply;
+            }
             data.id = id;
             data.choiceGroups ||= {};
             data.replies ||= [];
             chatCache[id] = data;
+            if(refreshDragon) saveChatProgress(id);
             if (data.pendingReply) scheduleReply(data, id);
             return data;
         });

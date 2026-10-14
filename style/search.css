@@ -222,7 +222,8 @@ h3 {
 }
 
 /* 用容器自身扩大悬停区，不覆盖文字，保证密码可选中复制 */
-.secret-trigger:hover {
+.secret-trigger:hover,
+.secret-trigger.secret-revealed {
     margin: -2%;
     padding: 2%;
 }
@@ -232,11 +233,13 @@ h3 {
     color: #202124;
 }
 
-.secret-trigger:hover .no-result-message {
+.secret-trigger:hover .no-result-message,
+.secret-trigger.secret-revealed .no-result-message {
     display: none;
 }
 
-.secret-trigger:hover .secret-password {
+.secret-trigger:hover .secret-password,
+.secret-trigger.secret-revealed .secret-password {
     display: inline;
 }
 

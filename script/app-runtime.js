@@ -1,7 +1,7 @@
 (() => {
     const routes = { "QQ.html": "qq", "testphoto.html": "photos", "search.html": "search", "QZone.html": "qzone", "AES.html": "aes", "AES_intro.html": "article" };
     const page = location.pathname.split("/").pop();
-    if (window === window.top && routes[page]) {
+    if (window === window.top && routes[page] && page !== "AES.html") {
         location.replace(`second.html?app=${routes[page]}`);
         return;
     }

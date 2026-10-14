@@ -1,5 +1,6 @@
 (() => {
     const FOLDER_PASSWORD = "TsqNGngc";
+    const FOLDER_UNLOCKED_KEY = "folder_unlocked";
     const apps = {
         qq: { title: "Penguin", page: "QQ.html" },
         photos: { title: "文件夹", page: "testphoto.html" },
@@ -11,6 +12,7 @@
     const frames = new Map();
     let current = null;
     let activeFolderPasswordRequest = null;
+    let folderUnlocked = localStorage.getItem(FOLDER_UNLOCKED_KEY) === "true";
     const appWindow = document.getElementById("app-window");
     function ensureFrame(id) {
         if (frames.has(id)) {
@@ -57,7 +59,7 @@
     }
     function open(id) {
         if (!apps[id]) return;
-        if (id !== "photos" || current === "photos") {
+        if (id !== "photos" || current === "photos" || folderUnlocked) {
             showApp(id);
             return;
         }
@@ -103,6 +105,8 @@
                     input.select();
                     return;
                 }
+                folderUnlocked = true;
+                localStorage.setItem(FOLDER_UNLOCKED_KEY, "true");
                 finish(true);
             };
             const limitPassword = () => {
@@ -146,7 +150,12 @@
     function openPage(page) {
         const url = new URL(page, location.href);
         const id = Object.keys(apps).find(key => new URL(apps[key].page, location.href).pathname === url.pathname);
-        if (url.origin === location.origin && id) open(id);
+        if (url.origin !== location.origin || !id) return;
+        if (id === "aes") {
+            window.open(url.href, "_blank", "noopener");
+            return;
+        }
+        open(id);
     }
     function showReplyToast(sender, message) {
         let container = document.querySelector(".qq-toast-container");

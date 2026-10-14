@@ -353,6 +353,12 @@ function showResult(results,secret=null){
 
             trigger.className="secret-trigger";
 
+            trigger.addEventListener("click",()=>{
+
+                trigger.classList.add("secret-revealed");
+
+            });
+
 
             let message =
             document.createElement("span");

@@ -342,9 +342,11 @@ function runAES(){
 
 function exitGame(){
 
-    // 返回保留在后台的空间页面。
-
-    GameApp.openPage("QZone.html");
+    // AES 在独立标签页中运行，关闭后原空间页面仍保留在原标签页。
+    window.close();
+    setTimeout(()=>{
+        if(!window.closed) location.href="second.html?app=qzone";
+    },100);
 
 }
 

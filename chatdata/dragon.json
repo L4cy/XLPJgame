@@ -2,6 +2,7 @@
     "id": "dragon",
     "name": "红龙",
     "type": "friend",
+    "scriptVersion": 2,
     "messages": [
         {
             "id": 1,
@@ -20,7 +21,7 @@
         {
             "id": 3,
             "sender": "dragon",
-            "text": "我都没注意到，喜欢的话可以常来玩",
+            "text": "我都没注意这些，喜欢的话可以常来玩",
             "unread": false
         },
         {
@@ -68,12 +69,6 @@
             "unread": false
         },
         {
-            "id": "dragon-history-xlpj-location",
-            "sender": "player",
-            "text": "对面有个泳池，在小区后面",
-            "unread": false
-        },
-        {
             "id": 11,
             "sender": "player",
             "text": "[语音通话已取消]",
@@ -82,7 +77,9 @@
         {
             "id": 12,
             "sender": "dragon",
-            "text": "你附近应该有座桥，你先过桥，能看到一个广场，然后左转有个公园，公园前面就到小区侧门了",
+            "type": "voice",
+            "duration": 32,
+            "text": "嗯你附近应该有座桥，你先过桥，能看到靠右有个广场，然后左边有个公园，不用拐弯，往前走就到小区侧门了，就在公园前面",
             "unread": false
         },
         {
@@ -104,9 +101,22 @@
             "unread": false
         },
         {
+            "id": "dragon-history-fountain",
+            "sender": "player",
+            "text": "这外面一圈小的和中间这个摇来摇去的像锡人二技能",
+            "hint": "（提示：锡人二技能是圆形）",
+            "unread": false
+        },
+        {
             "id": 16,
             "sender": "dragon",
             "text": "对",
+            "unread": false
+        },
+        {
+            "id": "dragon-history-integrated-strategies",
+            "sender": "dragon",
+            "text": "还在想打集的事",
             "unread": false
         },
         {
@@ -228,7 +238,7 @@
                 {
                     "sender": "system",
                     "type": "hint",
-                    "text": "提示：小猫只能提供大致的方位，且J哥不能飞哦，拐过弯以后，小猫就看不见啦"
+                    "text": "提示：小猫只能提供大致的方位，且J哥不能飞哦，拐过弯以后，小猫就看不见了"
                 }
             ]
         }

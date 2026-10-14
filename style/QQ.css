@@ -254,6 +254,35 @@
     line-height:1.6;
     text-align:center;
 }
+.chat-inline-hint{
+    color:#999;
+}
+
+/* QQ 风格语音标识，仅用于语音消息。 */
+.bubble.voice-bubble{
+    flex-direction:column;
+    align-items:flex-start;
+}
+.chat-voice{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:120px;
+    min-height:28px;
+}
+.chat-voice-icon{
+    display:block;
+    width:22px;
+    height:22px;
+    background:center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4' cy='12' r='2' fill='%23555'/%3E%3Cpath d='M9 8a6 6 0 0 1 0 8M13 5a10 10 0 0 1 0 14M17 2a14 14 0 0 1 0 20' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.chat-voice-duration{
+    color:#777;
+    font-size:13px;
+}
+.chat-voice-transcript{
+    margin-top:6px;
+}
 /* 每条消息 */
 .message{
     display:flex;
