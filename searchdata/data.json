@@ -1,6 +1,7 @@
 {
     "clues":[
-        "红龙"
+        "db文件格式转化",
+        "密文板"
     ],
 
     "secrets":[
@@ -23,6 +24,26 @@
     ],
 
     "contents":[
+        {
+            "keyword":"db文件格式转化",
+            "results":[
+                {
+                    "title":"db文件格式转化｜QQ 记录的保存与读取",
+                    "description":"认识 Msg3.0.db，了解 DAT 文件改名、扩展名显示与本地记录导入。",
+                    "url":"searchPage/db_format_intro.html"
+                }
+            ]
+        },
+        {
+            "keyword":"密文板",
+            "results":[
+                {
+                    "title":"密文板｜新世界的传送门",
+                    "description":"来自萨米的雪，于无风无月处飘落。",
+                    "url":"searchPage/cipherboard_intro.html"
+                }
+            ]
+        },
         {
         "keyword":"红龙",
 

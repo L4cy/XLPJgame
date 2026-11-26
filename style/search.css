@@ -68,19 +68,20 @@ h3 {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 2%;
+    gap: 12px;
 }
 
 #searchInput {
     flex: 1;
     min-width: 0;
-    padding: 2% 3%;
+    height: 52px;
+    padding: 12px 20px;
     color: var(--text-main);
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     outline: none;
     border: 1px solid var(--border);
-    border-radius: 24px;
+    border-radius: 26px;
     background: #fff;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -93,13 +94,16 @@ h3 {
 
 .search-area button {
     flex: 0 0 auto;
-    width: 14%;
+    width: 96px;
+    height: 52px;
+    padding: 0 14px;
     align-self: stretch;
     border: 1px solid var(--google-blue);
-    border-radius: 21px;
+    border-radius: 26px;
     background: var(--google-blue);
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
+    white-space: nowrap;
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -118,7 +122,7 @@ h3 {
     position: absolute;
     top: 115%;
     left: 0;
-    right: 16%;
+    right: 108px;
     display: none;
     overflow: hidden;
     z-index: 20;

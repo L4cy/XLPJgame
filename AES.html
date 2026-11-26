@@ -6,6 +6,7 @@
 <script src="script/app-runtime.js"></script>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>AES</title>
 
@@ -16,63 +17,47 @@
 }
 
 body{
-
     margin:0;
-
-    width:100vw;
-
-    height:100vh;
-
+    min-height:100vh;
+    display:flex;
+    padding:12px;
     background:#111827;
-
-    overflow:auto;
-
 }
 
 /* 主窗口 */
 .aes-box{
-
-    width:450px;
-
-    padding:35px;
-
-
-    background:
-    rgba(255,255,255,0.1);
-
-
+    width:100%;
+    max-width:450px;
+    margin:auto;
+    background:rgba(255,255,255,0.1);
     backdrop-filter:blur(10px);
-
-
     border-radius:20px;
-
-
-    box-shadow:
-    0 0 30px rgba(0,0,0,0.5);
-
-
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
     color:white;
-
-
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
-    position:relative;
-
-
 }
 
-h2{
+.aes-header{
+    position:sticky;
+    top:0;
+    z-index:1;
+    display:grid;
+    grid-template-columns:44px minmax(0,1fr) 44px;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    background:#1c2433;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    border-radius:20px 20px 0 0;
+}
 
+.aes-header h2{
+    grid-column:2;
+    margin:0;
     text-align:center;
+}
 
-    margin-top:0;
-
+.aes-content{
+    padding:0 clamp(16px, 5vw, 35px) 15px;
 }
 
 /* 标签 */
@@ -117,7 +102,7 @@ textarea{
 
 /* 按钮 */
 
-button{
+.aes-content button{
 
     width:100%;
 
@@ -141,7 +126,7 @@ button{
 
 }
 
-button:hover{
+.aes-content button:hover{
 
     transform:scale(1.05);
 
@@ -164,74 +149,25 @@ button:hover{
 /* 退出按钮 */
 
 .exit-btn{
-
-    position:absolute;
-
-
-    right:15px;
-
-    top:15px;
-
-
-    width:32px;
-
-    height:32px;
-
-
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
     border-radius:50%;
-
-
     border:none;
-
-
     background:rgba(255,255,255,0.15);
-
-
     color:white;
-
-
     font-size:22px;
-
-
-    line-height:28px;
-
-
-    text-align:center;
-
-
+    line-height:1;
     padding:0;
-
-
     cursor:pointer;
-
-
-    transition:.3s;
-
-
+    transition:background-color .3s;
 }
-
-
 
 .exit-btn:hover{
-
-
     background:#ff4d4f;
-
-
-    color:white;
-
-
-    transform:scale(1.1);
-
-
 }
-.exit-btn:hover{
 
-    background:#ff4d4f;
-
-    color:white;
-
-}
 .article-card,
 input::placeholder{
 
@@ -248,18 +184,12 @@ input::placeholder{
 <body>
 <div class="aes-box">
 
-<button 
-class="exit-btn" 
-type="button"
-aria-label="关闭AES，返回空间"
-onclick="exitGame()">
-×
-</button>
+<header class="aes-header">
+    <h2>AES 小工具</h2>
+    <button class="exit-btn" type="button" aria-label="关闭AES，返回空间" onclick="exitGame()">×</button>
+</header>
 
-
-<h2>AES 小工具</h2>
-
-
+<div class="aes-content">
 <h3>
 输入
 </h3>
@@ -310,6 +240,7 @@ rows="5"
 readonly>
 </textarea>
 
+</div>
 </div>
 
 <script src="script/crypto-js.min.js"></script>

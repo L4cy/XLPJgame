@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="来自萨米的雪，于无风无月处飘落。">
+    <title>密文板｜新世界的传送门</title>
+    <script src="../script/app-runtime.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f8f9f7; color: #343d39; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+        .top-line { height: 3px; background: #61756b; }
+        article { width: min(100% - 48px, 740px); margin: 0 auto; padding: 56px 0 64px; }
+        .category { margin: 0 0 18px; color: #6b7d72; font-size: 13px; letter-spacing: 3px; }
+        h1 { margin: 0; font-family: "Noto Serif SC", "Songti SC", SimSun, serif; font-size: clamp(30px, 5vw, 42px); font-weight: 500; line-height: 1.5; }
+        .subtitle { margin: 12px 0 22px; color: #79847c; font-size: 15px; }
+        .meta { padding-bottom: 24px; border-bottom: 1px solid #dce2dc; color: #849087; font-size: 13px; }
+        .epigraph { margin: 32px 0; padding: 18px 22px; border-left: 2px solid #95a69a; color: #627166; font-family: "Noto Serif SC", "Songti SC", SimSun, serif; line-height: 2; }
+        h2 { margin: 38px 0 22px; color: #43584b; font-size: 20px; font-weight: 500; letter-spacing: 2px; }
+        p { margin: 0 0 22px; font-size: 16px; line-height: 2.1; overflow-wrap: break-word; }
+        .divider { width: 72px; height: 1px; margin: 42px auto; background: #aab8ac; }
+        .author-note { margin-top: 36px; padding: 22px 24px; border: 1px solid #dce2dc; background: #f0f3ee; }
+        .author-note h2 { margin: 0 0 12px; font-size: 16px; }
+        .author-note p { margin: 0; color: #667268; font-size: 14px; line-height: 1.9; }
+        footer { margin-top: 32px; color: #879087; font-size: 12px; line-height: 1.9; }
+        a { color: #526f5b; text-underline-offset: 4px; }
+        .close-btn { position: fixed; z-index: 10; top: 20px; right: 24px; width: 42px; height: 42px; padding: 0; border: 1px solid #ccd6cd; border-radius: 50%; background: rgba(248,249,247,.95); color: #61756b; font-size: 26px; line-height: 38px; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+        .close-btn:hover { background: #61756b; border-color: #61756b; color: #fff; }
+        .close-btn:focus-visible { outline: 2px solid #61756b; outline-offset: 4px; }
+        header { padding-right: 38px; }
+        .article-stats { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; padding: 20px 0; border-top: 1px solid #dce2dc; border-bottom: 1px solid #dce2dc; color: #79847c; font-size: 14px; }
+        .article-stats strong { margin-left: 6px; color: #526f5b; font-weight: 500; }
+        .comments { margin-top: 32px; }
+        .comments h2 { margin: 0 0 10px; font-size: 18px; }
+        .comment { padding: 22px 0; border-bottom: 1px solid #e1e6df; }
+        .comment-name { color: #526f5b; font-size: 14px; font-weight: 600; }
+        .comment p { margin: 8px 0 0; font-size: 14px; line-height: 1.9; }
+        .comment-reply { margin-top: 18px; padding: 16px 18px; border-left: 2px solid #aab8ac; background: #f0f3ee; }
+        .reply-label { margin-left: 8px; color: #849087; font-size: 12px; font-weight: 400; }
+        a:focus-visible { outline: 2px solid #61756b; outline-offset: 5px; }
+        @media (max-width: 520px) {
+            article { width: calc(100% - 36px); padding-top: 28px; }
+            p { font-size: 15px; }
+            .epigraph, .author-note { padding: 16px; }
+            .close-btn { top: 14px; right: 14px; }
+            .comment-reply { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-line"></div>
+    <button class="close-btn" type="button" aria-label="关闭文章，返回搜索" onclick="GameApp.openPage('search.html')">×</button>
+    <article>
+        <header>
+            <div class="category">北地札记 / 器物与传闻</div>
+            <h1>密文板：新世界的传送门</h1>
+            <p class="subtitle">卜问流光通万灵，天门于此开</p>
+            <div class="meta">文 / 林缘拾遗者 · 山川游记</div>
+        </header>
+
+        <blockquote class="epigraph">积雪掩盖了脚印。向前与向后并无区别，你可以自由地选择去路。</blockquote>
+
+        <section aria-labelledby="boards">
+            <h2 id="boards">一、被携带的预兆</h2>
+            <p>在泰拉大陆的银凇雪境中，向北行进的人有机会拾得一种名为“密文板”的物件。萨米神明的讯息，藏在古老的刻痕里。有人从中辨认猎手，有人认出树冠与水面。雪原不会为每一位过客解释，过客只能带着自己的理解继续走。</p>
+            <p>我们可以透过源石，窥见这个文明的一角。在依据源石记录复现而成的宣传游戏中，密文板被简化为可供收集、组合与消耗的道具。玩家将“本因”与“布局”两类密文板配对，进行“密文宣告”：布局指出宣告作用的节点，本因决定发生何种效果。一次合适的宣告，可以改变前路的遭遇，为队伍争取补给与喘息；也可能为探索打开另一种去向。</p>
+            <p>刻痕之外，还有“修辞”。它随特定的密文板出现，为宣告附上额外的作用。符合条件的组合，还会引出“柯瓦狄协语”，增强宣告的效果。</p>
+            <p>宣告之后，所用的密文板会被消耗。你献出先古神明的力量，借来了一次意料之外的相逢。但仍需小心，下一阵雪落下以前，要尽快选择自己的方向。</p>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section aria-labelledby="rumor">
+            <h2 id="rumor">二、无风无月之夜</h2>
+            <p>关于密文板，笔者还听过一种传闻。它没有出现在游戏的说明里，也没有一个讲述者能说清传闻的起源。</p>
+            <p>它说，每隔一段时间，会有那么一个<strong>无风无月之夜</strong>。山上每一棵树的枝条都静止，月亮完全隐于云层；即便是在由源石复现的游戏中，也听不见任何声音，所有角色的形象都变为黑影。等到现实中的寂静与游戏中的寂静完全重合，两边的距离便会短暂地消失。那时，两处文明交汇，隔在其间的东西薄得像一层尚未结实的冰。</p>
+            <p>若有人在那一天拿到<strong>两块特殊的密文板</strong>，便能够借由它们前往游戏世界。一块使道路认得来者，一块使来者认得道路。</p>
+            <p>至于如何找到这两块板片，讲述者的答案各不相同。有人说，它们有蛊惑人心的能力，只需一眼便会痴迷其中，终生寻找另一块；有人说，持有者会先梦见一片从未见过、却知道如何穿过的森林；也有人说，密文板本身并不重要，只要拿上两块普通的陶瓷片，道路自会选择认可的来者，指引ta前进。</p>
+            <p>故事到这里便没有下文了。没有被带回的枝叶，没有雪原的影像。甚至连那个日子，也没有人能够指出。只剩下“两块”这个数目，被一遍遍讲述，流传下来。</p>
+            <p>笔者已经听过很多遍这个传闻了，但至今没有遇到一位成功归来的讲述者。密文板究竟会将人带往何处，还是这只是游戏宣传的一环？源石记载的文明是否真实存在？<strong>或许只有相信它存在的人，才能见证它的真实。</strong>如果有读者能提供更多线索，笔者将不胜感激。</p>
+        </section>
+
+        <footer>资料参考：<a href="https://prts.wiki/w/探索者的银凇止境/密文板研究" target="_blank" rel="noopener noreferrer">PRTS · 密文板研究</a>。本文仅为保存这个故事。</footer>
+        <div class="article-stats" aria-label="文章数据">
+            <span>阅读<strong>215</strong></span>
+            <span>点赞<strong>19</strong></span>
+            <span>评论<strong>4</strong></span>
+        </div>
+        <section class="comments" aria-labelledby="comments-title">
+            <h2 id="comments-title">评论（4）</h2>
+            <div class="comment">
+                <div class="comment-name">陪小军夺个冠</div>
+                <p>打集打疯了</p>
+            </div>
+            <div class="comment">
+                <div class="comment-name">听雪落</div>
+                <p>有点奇怪，照这个说法，得先相信才能看见，那不成邪教了吗？</p>
+            </div>
+            <div class="comment">
+                <div class="comment-name">潇洒哥</div>
+                <p>作者还在吗？方便留个联系方式吗</p>
+                <div class="comment-reply">
+                    <div class="comment-name">潇洒哥<span class="reply-label">回复 潇洒哥</span></div>
+                    <p>我在屋内发现了一块奇怪的板子，不会是真的吧？作者看到的话加一下我的 Penguin：ll999999，我把照片发给你看</p>
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>

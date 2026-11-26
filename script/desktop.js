@@ -4,10 +4,12 @@
     const apps = {
         qq: { title: "Penguin", page: "QQ.html" },
         photos: { title: "文件夹", page: "testphoto.html" },
-        search: { title: "search · 线索搜索", page: "search.html" },
+        search: { title: "搜索 · 线索搜索", page: "search.html" },
         qzone: { title: "Penguin空间", page: "QZone.html" },
         aes: { title: "AES 工具", page: "AES.html" },
-        article: { title: "AES 介绍", page: "AES_intro.html" }
+        article: { title: "AES 介绍", page: "AES_intro.html" },
+        cipherboard: { title: "密文板 · 雪原留下的两句话", page: "searchPage/cipherboard_intro.html" },
+        dbformat: { title: "db文件格式转化", page: "searchPage/db_format_intro.html" }
     };
     const frames = new Map();
     let current = null;

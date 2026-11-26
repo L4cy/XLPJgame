@@ -128,67 +128,121 @@ if (!currentDirectory) {
     return;
 }
 
-if (currentDirectory.id !== "photos") {
-    if (!currentDirectory.files.length) {
-        const empty = document.createElement("p");
-        empty.className = "folder-empty";
-        empty.textContent = "此文件夹为空";
-        box.appendChild(empty);
-    } else {
-        currentDirectory.files.forEach(file => createFile(file.name, () => openConfiguredFile(file), false, file.type));
-    }
-    return;
+const files = GameFiles.listFiles(currentDirectory.id);
+if (!files.length) {
+    const empty = document.createElement("p");
+    empty.className = "folder-empty";
+    empty.textContent = "此文件夹为空";
+    box.appendChild(empty);
 }
-
-if(state.status==="future"){
-createFile(
-"future",
-openFuture
-);
-
-return;
-}
-
-createFile(
-"present",
-()=>openPhoto(
-"figure/present.png",
-false
-)
-);
-createFile(
-"████",
-openPast,
-true
-);
+files.forEach(createFile);
 }
 
 function openConfiguredFile(file){
-if(file.src === "figure/map.jpg"){
-    state.mapOpened=true;
-    save();
-}
-openPhoto(file.src,false);
+    file = GameFiles.resolve(file);
+    if(file.invalidFormat){
+        showPreviewError("文件格式错误，无法预览");
+        return;
+    }
+    if(!GameFiles.canPreview(file)){
+        showPreviewError("无法预览");
+        return;
+    }
+    if(file.id === "photo-past") return openPast();
+    if(file.id === "photo-future") return openFuture();
+    if(file.src === "figure/map.jpg"){
+        state.mapOpened=true;
+        save();
+    }
+    openPhoto(file.src,false);
 }
 
-function createFile(name,func,locked=false,type){
-const displayName = name.replace(/\.[a-z0-9]+(?=\s*🔒?\s*$)/i, "");
-const extension = type || name.match(/\.([a-z0-9]+)(?=\s*🔒?\s*$)/i)?.[1]?.toUpperCase() || "PNG";
-let div=document.createElement("button");
-div.type="button";
-div.className="file";
-div.innerHTML=`
-<span class="file-preview" aria-hidden="true">${locked ? "🔒" : "▧"}</span>
-<span class="file-name">${displayName}</span>
-<span class="file-kind">${extension} 图片</span>
-`;
-div.onclick=func;
-
-document
-.getElementById("files")
-.appendChild(div);
-document.getElementById("folderStatus").textContent = `${document.getElementById("files").children.length} 个项目`;
+function showPreviewError(text){
+    document.getElementById("filePreviewErrorTitle").textContent = text;
+    document.getElementById("filePreviewError").showModal();
 }
+
+function createFile(file){
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "file";
+    button.dataset.fileId = file.id;
+    const icon = document.createElement("span");
+    icon.className = "file-preview";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = file.locked ? "🔒" : "▧";
+    const name = document.createElement("span");
+    name.className = "file-name";
+    name.textContent = GameFiles.displayName(file);
+    const kind = document.createElement("span");
+    kind.className = "file-kind";
+    kind.textContent = GameFiles.typeLabel(file);
+    button.append(icon, name, kind);
+    button.onclick = () => openConfiguredFile(file);
+    button.oncontextmenu = event => {
+        event.preventDefault();
+        if(file.locked){
+            hideFileMenu();
+            return;
+        }
+        showFileMenu(event, file);
+    };
+    document.getElementById("files").appendChild(button);
+    document.getElementById("folderStatus").textContent = document.getElementById("files").children.length + " 个项目";
+}
+
+let contextFile = null;
+const fileMenu = document.getElementById("fileContextMenu");
+const renameDialog = document.getElementById("renameFileDialog");
+const renameInput = document.getElementById("renameFileInput");
+function hideFileMenu(){ fileMenu.hidden = true; }
+function showFileMenu(event, file){
+    contextFile = file;
+    fileMenu.hidden = false;
+    fileMenu.style.left = Math.max(0, Math.min(event.clientX, innerWidth - fileMenu.offsetWidth - 8)) + "px";
+    fileMenu.style.top = Math.max(0, Math.min(event.clientY, innerHeight - fileMenu.offsetHeight - 8)) + "px";
+    document.getElementById("renameFileButton").focus();
+}
+document.addEventListener("click", hideFileMenu);
+document.addEventListener("keydown", event => { if(event.key === "Escape") hideFileMenu(); });
+window.addEventListener("blur", hideFileMenu);
+document.getElementById("renameFileButton").onclick = () => {
+    if(!contextFile) return;
+    hideFileMenu();
+    if(GameFiles.resolve(contextFile).locked){
+        showPreviewError("这个文件无法更改名称");
+        return;
+    }
+    renameInput.value = GameFiles.resolve(contextFile).name;
+    document.getElementById("renameFileError").textContent = "";
+    renameDialog.showModal();
+    renameInput.focus();
+    renameInput.select();
+};
+document.getElementById("renameFileCancel").onclick = () => renameDialog.close();
+document.getElementById("renameFileForm").onsubmit = event => {
+    event.preventDefault();
+    try {
+        GameFiles.rename(contextFile, renameInput.value);
+        renameDialog.close();
+        showFiles();
+    } catch(error){
+        document.getElementById("renameFileError").textContent = error.message;
+    }
+};
+const extensionToggle = document.getElementById("showFileExtensions");
+extensionToggle.checked = GameFiles.showExtensions();
+extensionToggle.onchange = () => {
+    GameFiles.setShowExtensions(extensionToggle.checked);
+    showFiles();
+};
+window.addEventListener("storage", event => {
+    if([GameFiles.stateKey, GameFiles.settingsKey].includes(event.key)){
+        extensionToggle.checked = GameFiles.showExtensions();
+        showFiles();
+    }
+});
+
 async function openPast(){
 let password=await requestPassword();
 

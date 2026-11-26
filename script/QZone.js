@@ -4,6 +4,48 @@
 
 const qzoneFeed = document.querySelector(".qzone-feed");
 const qzoneClose = document.querySelector(".qzone-close");
+const profileAvatar = document.querySelector(".qzone-profile-avatar img");
+profileAvatar.addEventListener("error", () => { profileAvatar.hidden = true; });
+if (profileAvatar.complete && !profileAvatar.naturalWidth) profileAvatar.hidden = true;
+
+const qzonePage = document.querySelector(".qzone-page");
+const navigationItems = document.querySelectorAll(".qzone-nav-item");
+let currentView = "feed";
+
+function selectQZoneView(view) {
+    currentView = view;
+    navigationItems.forEach(item => {
+        const selected = item.dataset.view === view;
+        item.classList.toggle("is-active", selected);
+        if (selected) item.setAttribute("aria-current", "page");
+        else item.removeAttribute("aria-current");
+    });
+    qzoneFeed.hidden = view !== "feed";
+    qzonePage.hidden = view === "feed";
+    qzonePage.replaceChildren();
+    if (view === "profile") {
+        qzonePage.appendChild(createTextElement("h2", "", "XLPJ"));
+        qzonePage.appendChild(createTextElement("p", "", "俺は運命と戦う、そして勝ってみせる。"));
+    } else if (view === "album") {
+        qzonePage.appendChild(createTextElement("h2", "", "相册"));
+        const album = document.createElement("div");
+        album.className = "qzone-album";
+        qzoneFeed.querySelectorAll(".qzone-image").forEach(source => {
+            const photo = source.cloneNode(true);
+            photo.addEventListener("click", () => imagePreview.open(photo));
+            photo.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    imagePreview.open(photo);
+                }
+            });
+            album.appendChild(photo);
+        });
+        qzonePage.appendChild(album.children.length ? album : createTextElement("p", "qzone-loading", "暂无照片"));
+    }
+}
+
+navigationItems.forEach(item => item.addEventListener("click", () => selectQZoneView(item.dataset.view)));
 let imagePreviewTrigger = null;
 
 function createImagePreview() {
@@ -248,15 +290,16 @@ function createPost(post) {
 }
 
 function renderPosts(posts) {
-    const chronologicalPosts = [...posts].sort((first, second) =>
-        first.time.localeCompare(second.time)
+    const newestFirstPosts = [...posts].sort((first, second) =>
+        second.time.localeCompare(first.time)
     );
 
     qzoneFeed.innerHTML = "";
-    chronologicalPosts.forEach(post => {
+    newestFirstPosts.forEach(post => {
         qzoneFeed.appendChild(createPost(post));
     });
     qzoneFeed.scrollTop = 0;
+    if (currentView !== "feed") selectQZoneView(currentView);
 }
 
 function showLoadError() {

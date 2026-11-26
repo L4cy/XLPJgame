@@ -179,7 +179,7 @@ function openChat(conversation){
     // 如果之前加载过，直接使用缓存
 
     if(chatCache[conversation.id] &&
-        (conversation.id !== "dragon" || chatCache[conversation.id].scriptVersion === 2)){
+        (!["dragon", "deer"].includes(conversation.id) || chatCache[conversation.id].scriptVersion === 2)){
 
     currentChatData =
         chatCache[conversation.id];
@@ -277,16 +277,18 @@ function renderChat(){
 function updateComposerState(){
     const veConversationComplete =
         currentChatData &&
-        currentChatData.id === "ve" &&
+        ["ve", "deer"].includes(currentChatData.id) &&
         currentChatData.currentChoiceGroup === "__complete__" &&
         !currentChatData.pendingReply;
+    const deerChoicesExhausted = currentChatData?.id === "deer" &&
+        !currentChatData.pendingReply && !getAvailableChoices().length;
 
-    input.disabled = veConversationComplete;
-    sendBtn.disabled = veConversationComplete;
-    inputBar.classList.toggle("is-disabled", veConversationComplete);
-    input.placeholder = veConversationComplete ? "对话已结束" : "输入消息";
+    input.disabled = veConversationComplete || deerChoicesExhausted;
+    sendBtn.disabled = veConversationComplete || deerChoicesExhausted;
+    inputBar.classList.toggle("is-disabled", input.disabled);
+    input.placeholder = veConversationComplete ? "对话已结束" : deerChoicesExhausted ? "暂无可发送的消息" : "输入消息";
 
-    if(veConversationComplete){
+    if(input.disabled){
         selectedChoice = null;
         input.value = "";
         choiceBox.style.display = "none";
@@ -346,6 +348,7 @@ function createMessage(msg){
 
     if(msg.type==="hint"){
         div.className="chat-hint";
+        if(msg.align === "right") div.classList.add("chat-hint-right");
         div.textContent=msg.text;
         area.appendChild(div);
         return;
@@ -435,6 +438,21 @@ function clearUnread(){
 // ============================
 // 选项按钮
 // ============================
+function getAvailableChoices(){
+    if(!currentChatData || currentChatData.pendingReply) return [];
+    const group = (currentChatData.choiceGroups || {})[currentChatData.currentChoiceGroup] || [];
+    return group.filter(choice => {
+        if(choice.requiresHistoryMessageId && !currentChatData.messages.some(message =>
+            message.id === choice.requiresHistoryMessageId)) return false;
+        if(Number.isInteger(choice.maxSends)){
+            const sentCount = currentChatData.messages.filter(message =>
+                message.sender === "player" && message.choiceId === choice.id).length;
+            if(sentCount >= choice.maxSends) return false;
+        }
+        return true;
+    });
+}
+
 function renderChoices(){
 
     choiceBox.innerHTML="";
@@ -444,10 +462,7 @@ function renderChoices(){
         return;
     }
 
-    let group =
-        (currentChatData.choiceGroups || {})[
-            currentChatData.currentChoiceGroup
-        ];
+    let group = getAvailableChoices();
 
     if(!group){
         return;
@@ -516,10 +531,7 @@ function showChoices(){
         return;
     }
 
-    let group =
-        (currentChatData.choiceGroups || {})[
-            currentChatData.currentChoiceGroup
-        ];
+    let group = getAvailableChoices();
 
     if(!group){
         return;
@@ -571,6 +583,7 @@ function sendChoice(choice){
     if(!currentChatData || currentChatData.pendingReply){
         return;
     }
+    if(!getAvailableChoices().includes(choice)) return;
 
     // 防止重复点击
     choiceBox.style.display="none";
@@ -582,6 +595,8 @@ function sendChoice(choice){
         sender:"player",
 
         text:choice.text,
+
+        choiceId:choice.id,
 
         time:choice.time || "",
 
@@ -600,6 +615,9 @@ function sendChoice(choice){
     currentChatData.messages.push(
         playerMsg
     );
+    if(choice.hintAfterSend && !currentChatData.messages.some(message => message.id === choice.hintAfterSend.id)){
+        currentChatData.messages.push({ ...choice.hintAfterSend });
+    }
     saveChatProgress(
     currentChatData.id
 );
@@ -846,7 +864,8 @@ function loadChat(id) {
     if (chatLoads.has(id)) return chatLoads.get(id);
     const saved = chatCache[id];
     const refreshDragon = id === "dragon" && saved && saved.scriptVersion !== 2;
-    const loading = (saved && !refreshDragon ? Promise.resolve(saved) :
+    const refreshDeer = id === "deer" && saved && saved.scriptVersion !== 2;
+    const loading = (saved && !refreshDragon && !refreshDeer ? Promise.resolve(saved) :
         fetch(`chatdata/${id}.json`).then(response => {
             if (!response.ok) throw new Error("聊天数据不存在");
             return response.json();
@@ -864,11 +883,46 @@ function loadChat(id) {
                 data.currentChoiceGroup = saved.currentChoiceGroup || data.currentChoiceGroup;
                 if(saved.pendingReply) data.pendingReply = saved.pendingReply;
             }
+            if(refreshDeer){
+                let greetings = 0;
+                const hello = data.choiceGroups.choice_start[0];
+                const ask = data.choiceGroups.ask_identity[0];
+                data.messages = (saved.messages || []).flatMap(message => {
+                    if(message.sender !== "player" || message.choiceId !== "deer_hello") return [message];
+                    greetings++;
+                    if(greetings === 1) return [message, { ...hello.hintAfterSend }];
+                    if(greetings === 2) return [{ ...message, text: ask.text, choiceId: ask.id }];
+                    return [];
+                });
+                data.currentChoiceGroup = saved.currentChoiceGroup === "__complete__"
+                    ? "__complete__" : greetings >= 2 ? "await_reply" : greetings === 1 ? "ask_identity" : "choice_start";
+                if(saved.pendingReply) data.pendingReply = saved.pendingReply;
+            }
             data.id = id;
             data.choiceGroups ||= {};
             data.replies ||= [];
+            // 兼容已有存档：补齐林中鹿的发送日期，不重置问候次数和对话进度。
+            if(id === "deer"){
+                const datedChoices = new Set(["deer_hello", "deer_ask_identity", "deer_password"]);
+                Object.values(data.choiceGroups).flat().forEach(choice => {
+                    if(datedChoices.has(choice.id)) choice.time = "2026/07/06";
+                    if(choice.hintAfterSend?.id === "deer_identity_hint"){
+                        choice.hintAfterSend.align = "right";
+                        choice.hintAfterSend.text = choice.hintAfterSend.text.replace(/^（|）$/g, "");
+                    }
+                });
+                data.messages.forEach(message => {
+                    if(message.id === "deer_identity_hint"){
+                        message.align = "right";
+                        message.text = message.text.replace(/^（|）$/g, "");
+                    }
+                    if(message.sender === "player" && datedChoices.has(message.choiceId)){
+                        message.time = "2026/07/06";
+                    }
+                });
+            }
             chatCache[id] = data;
-            if(refreshDragon) saveChatProgress(id);
+            if(refreshDragon || id === "deer") saveChatProgress(id);
             if (data.pendingReply) scheduleReply(data, id);
             return data;
         });

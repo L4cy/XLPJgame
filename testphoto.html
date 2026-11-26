@@ -8,7 +8,7 @@
 <script src="script/app-runtime.js"></script>
 <title>文件夹</title>
 
-<link rel="stylesheet" href="style/photofolder.css?v=folder-close-1">
+<link rel="stylesheet" href="style/photofolder.css?v=file-rename-5">
 
 </head>
 <body>
@@ -21,6 +21,7 @@
         <button id="folderUp" type="button" aria-label="返回文件夹列表" onclick="openDirectory(null)">↑</button>
         <button class="folder-breadcrumb" type="button" onclick="openDirectory(null)">文件夹</button>
         <span id="folderPathSeparator" hidden>›</span><span id="folderPathName" hidden></span>
+        <label class="folder-extension-toggle"><input id="showFileExtensions" type="checkbox">显示文件扩展名</label>
     </nav>
     <div class="folder-body">
         <aside class="folder-sidebar" aria-label="文件夹导航"><span class="folder-section">此电脑</span><button class="folder-nav" data-directory="" type="button" onclick="openDirectory(null)">📁 文件夹</button><div id="folderNavigation"></div></aside>
@@ -74,7 +75,23 @@
     </form>
 </div>
 
-<script src="script/folders.js?v=map-name-2"></script>
-<script src="script/photofolder.js?v=map-progress-1"></script>
+<dialog id="filePreviewError" aria-labelledby="filePreviewErrorTitle">
+    <form method="dialog">
+        <p id="filePreviewErrorTitle">无法预览</p>
+        <button type="submit">确认</button>
+    </form>
+</dialog>
+<div id="fileContextMenu" hidden><button id="renameFileButton" type="button">重命名</button></div>
+<dialog id="renameFileDialog" aria-labelledby="renameFileTitle">
+    <form id="renameFileForm">
+        <h2 id="renameFileTitle">重命名</h2>
+        <label for="renameFileInput">文件名（请不要随意更改后缀）</label>
+        <input id="renameFileInput" type="text" maxlength="180" autocomplete="off" spellcheck="false">
+        <p id="renameFileError" role="alert"></p>
+        <div class="rename-file-actions"><button id="renameFileCancel" type="button">取消</button><button type="submit">确认</button></div>
+    </form>
+</dialog>
+<script src="script/folders.js?v=locked-rename-6"></script>
+<script src="script/photofolder.js?v=locked-context-7"></script>
 </body>
 </html>

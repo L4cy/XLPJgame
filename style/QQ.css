@@ -75,6 +75,8 @@
 /* 左侧 */
 
 .qq-sidebar{
+    display:flex;
+    flex-direction:column;
     width:22%;
     background:#eeeeee;
 
@@ -87,6 +89,7 @@
 }
 
 .qq-item{
+    flex-shrink:0;
     height:12%;
     display:flex;
     align-items:center;
@@ -94,6 +97,42 @@
     cursor:pointer;
     position:relative;
 }
+
+/* 底部功能与本地记录导入窗口 */
+.qq-sidebar-tools{margin-top:auto;display:flex;position:sticky;bottom:0;background:#eee;border-top:1px solid #d8dce1;padding:8px 3px;gap:2px;z-index:2;}
+.qq-sidebar-tools > button,.qq-tools-wrap{flex:1;min-width:0;}
+.qq-sidebar-tools button{border:0;background:transparent;color:#536474;cursor:pointer;font:inherit;}
+.qq-sidebar-tools > button,.qq-tools-wrap > button{width:100%;display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 2px;font-size:12px;border-radius:4px;}
+.qq-sidebar-tools button:hover{background:#d5ecff;}
+.qq-sidebar-tools button:disabled{opacity:.4;cursor:not-allowed;background:transparent;}
+.qq-sidebar-tools button span:first-child{font-size:20px;}
+.qq-tools-wrap{position:relative;}
+#qq-tools-menu{position:absolute;bottom:100%;right:0;width:160px;padding:5px;background:white;border:1px solid #c9d5df;box-shadow:0 4px 15px #0002;border-radius:4px;}
+#qq-tools-menu button{width:100%;padding:10px;text-align:left;font-size:13px;}
+#qq-import-dialog{width:min(660px,90vw);max-height:90vh;padding:0;border:1px solid #bdcad5;border-radius:8px;background:#f5f7fa;color:#334155;box-shadow:0 15px 60px #0004;font:14px "Microsoft YaHei",sans-serif;}
+#qq-import-dialog::backdrop{background:#13243855;}
+#qq-import-dialog [hidden]{display:none!important;}
+.qq-dialog-header{display:flex;align-items:center;justify-content:space-between;background:#12b7f5;color:white;padding:12px 18px;}
+.qq-dialog-header button{border:0;background:transparent;color:white;font-size:22px;cursor:pointer;}
+.qq-dialog-content{padding:20px;}
+.qq-dialog-content h3{font-size:15px;margin-top:0;}
+.qq-dialog-content button,.qq-dialog-actions button{border:1px solid #b9c9d7;background:white;border-radius:4px;padding:7px 14px;color:#334155;font:inherit;cursor:pointer;}
+.qq-dialog-content button:hover,.qq-dialog-actions button:hover{background:#e5f3ff;}
+.qq-dialog-actions{padding:12px 20px;border-top:1px solid #dbe3ea;display:flex;justify-content:flex-end;gap:10px;}
+#qq-import-submit{background:#12a9e3;border-color:#12a9e3;color:white;}
+#qq-import-dialog button:disabled{opacity:.45;cursor:not-allowed;}
+#qq-import-status{min-height:22px;margin-bottom:0;overflow-wrap:anywhere;}
+#qq-import-status.is-error{color:#c43a3a;}
+.qq-file-path{display:flex;gap:8px;align-items:center;margin-bottom:12px;}
+.qq-file-browser{display:flex;border:1px solid #d2dce5;background:white;min-height:220px;max-height:35vh;overflow:auto;}
+#qq-file-folders{flex:0 0 125px;background:#edf2f7;padding:6px;overflow:auto;}
+#qq-file-folders button{display:block;border:0;background:transparent;padding:8px;width:100%;text-align:left;}
+#qq-file-list{flex:1;min-width:0;padding:8px;overflow:auto;}
+#qq-file-list button{display:block;width:100%;border:1px solid transparent;text-align:left;margin-bottom:4px;overflow-wrap:anywhere;}
+#qq-file-list button[aria-pressed="true"]{background:#d5ecff;border-color:#9bc7ee;}
+#qq-import-bar{width:100%;height:20px;accent-color:#12b7f5;}
+#qq-import-percent{text-align:right;font-variant-numeric:tabular-nums;}
+@media(max-width:600px){.qq-sidebar{width:28%;}.qq-sidebar-tools > button,.qq-tools-wrap > button{font-size:10px;}#qq-file-folders{flex-basis:90px;}}
 
 .qq-item img{
     width:18%;
@@ -256,6 +295,16 @@
 }
 .chat-inline-hint{
     color:#999;
+}
+.chat-hint.chat-hint-right{
+    max-width:60%;
+    margin:1% 2% 1% auto;
+    padding:1% 2%;
+    text-align:right;
+    background:transparent;
+    border:0;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
 }
 
 /* QQ 风格语音标识，仅用于语音消息。 */

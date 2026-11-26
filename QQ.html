@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script/app-runtime.js"></script>
 
-    <link rel="stylesheet" href="./style/QQ.css?v=dragon-voice-2">
+    <link rel="stylesheet" href="./style/QQ.css?v=deer-os-right-1">
     
 </head>
 
@@ -65,6 +65,10 @@
 
 
 
+            <div class="qq-item" data-type="friend" data-id="deer">
+                <img src="figure/avatar/deer.png" alt="">
+                林中鹿
+            </div>
             <div class="qq-item"
                 id="group"
                 data-type="group"
@@ -77,13 +81,13 @@
 
 
             </div>
-            <div class="qq-item"
-                data-type="qzone">
-
-                <img src="avatar/qzone.png">
-
-                Penguin空间
-
+            <div class="qq-sidebar-tools">
+                <button id="qq-zone" type="button" title="空间"><span aria-hidden="true">⭐</span><span>空间</span></button>
+                <button type="button" title="邮箱暂不可用" disabled><span aria-hidden="true">✉</span><span>邮箱</span></button>
+                <div class="qq-tools-wrap">
+                    <button id="qq-tools" type="button" aria-expanded="false" aria-controls="qq-tools-menu"><span aria-hidden="true">⚙</span><span>工具</span></button>
+                    <div id="qq-tools-menu" hidden><button id="qq-import" type="button">导入消息记录</button></div>
+                </div>
             </div>
             
 
@@ -197,4 +201,20 @@
 
 
 </div>
-<script src="./script/QQ.js?v=dragon-voice-2"></script>
+<dialog id="qq-import-dialog" aria-labelledby="qq-import-title">
+    <header class="qq-dialog-header"><span id="qq-import-title">导入消息记录</span><button id="qq-import-close" type="button" aria-label="关闭导入窗口">×</button></header>
+    <div class="qq-dialog-content">
+        <section id="qq-import-start"><h3>请选择导入方式</h3><label><input type="radio" checked name="import-mode"> 从指定文件导入</label><p>文件名：<span id="qq-import-filename">未选择文件</span></p><button id="qq-import-browse" type="button">浏览…</button></section>
+        <section id="qq-import-picker" hidden>
+            <nav class="qq-file-path"><button id="qq-file-up" type="button">↑</button><button id="qq-file-home" type="button">此电脑</button><span id="qq-file-path"></span></nav>
+            <div class="qq-file-browser"><aside id="qq-file-folders" aria-label="文件夹"></aside><div id="qq-file-list" aria-label="文件列表"></div></div>
+            <p>文件名：<span id="qq-file-selection">未选择文件</span></p>
+        </section>
+        <section id="qq-import-progress" hidden><p>正在导入消息记录，请稍候…</p><progress id="qq-import-bar" max="100" value="0" aria-label="导入进度"></progress><p id="qq-import-percent">0%</p></section>
+        <p id="qq-import-status" role="status" aria-live="polite"></p>
+    </div>
+    <footer class="qq-dialog-actions"><button id="qq-import-cancel" type="button">取消</button><button id="qq-import-submit" type="button" disabled>导入</button></footer>
+</dialog>
+<script src="./script/folders.js?v=locked-rename-6"></script>
+<script src="./script/QQ.js?v=deer-os-right-1"></script>
+<script src="./script/qq-import.js?v=deer-history-7"></script>

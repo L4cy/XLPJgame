@@ -1,8 +1,10 @@
 (() => {
-    const routes = { "QQ.html": "qq", "testphoto.html": "photos", "search.html": "search", "QZone.html": "qzone", "AES.html": "aes", "AES_intro.html": "article" };
+    const routes = { "QQ.html": "qq", "testphoto.html": "photos", "search.html": "search", "QZone.html": "qzone", "AES.html": "aes", "AES_intro.html": "article", "cipherboard_intro.html": "cipherboard", "db_format_intro.html": "dbformat" };
     const page = location.pathname.split("/").pop();
     if (window === window.top && routes[page] && page !== "AES.html") {
-        location.replace(`second.html?app=${routes[page]}`);
+        const desktopUrl = new URL("../second.html", document.currentScript.src);
+        desktopUrl.searchParams.set("app", routes[page]);
+        location.replace(desktopUrl.href);
         return;
     }
     window.GameApp = {

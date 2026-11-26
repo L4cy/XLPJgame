@@ -1,3 +1,67 @@
+#filePreviewError{
+position:fixed;
+inset:0;
+margin:auto;
+width:min(380px,calc(100vw - 48px));
+padding:0;
+border:1px solid #cbd8e4;
+border-radius:12px;
+box-sizing:border-box;
+background:#fff;
+color:#33485c;
+box-shadow:0 18px 60px #0004;
+font-family:"Microsoft YaHei",Arial,sans-serif;
+text-align:center;
+}
+
+#filePreviewError::backdrop{
+background:rgba(20,35,50,.3);
+}
+
+#filePreviewError form{
+padding:32px 28px 24px;
+}
+
+#filePreviewErrorTitle{
+margin:8px 0 30px;
+font-size:18px;
+line-height:1.6;
+}
+
+#filePreviewError button{
+min-width:104px;
+padding:9px 24px;
+border:1px solid #3696dd;
+border-radius:6px;
+background:#3696dd;
+color:#fff;
+font:inherit;
+cursor:pointer;
+}
+
+#filePreviewError button:hover{
+background:#2785ca;
+}
+
+#filePreviewError button:focus-visible{
+outline:2px solid #1c6ca9;
+outline-offset:3px;
+}
+
+.folder-extension-toggle{margin-left:auto;display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:12px;color:#52677a;}
+#fileContextMenu{position:fixed;z-index:1000;width:150px;padding:5px;background:white;border:1px solid #cbd8e4;border-radius:5px;box-shadow:0 5px 18px #0003;}
+#fileContextMenu[hidden]{display:none;}
+#fileContextMenu button{width:100%;padding:9px 14px;border:0;background:white;color:#33485c;text-align:left;font:inherit;cursor:pointer;}
+#fileContextMenu button:hover,#fileContextMenu button:focus-visible{background:#e3f1ff;}
+#renameFileDialog{width:min(420px,calc(100vw - 48px));margin:auto;padding:24px;box-sizing:border-box;border:1px solid #cbd8e4;border-radius:12px;background:white;color:#33485c;box-shadow:0 18px 60px #0004;font:14px "Microsoft YaHei",Arial,sans-serif;}
+#renameFileDialog::backdrop{background:rgba(20,35,50,.3);}
+#renameFileDialog h2{font-size:18px;margin:0 0 20px;}
+#renameFileInput{display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:10px;border:1px solid #b9cad8;border-radius:5px;font:inherit;}
+#renameFileError{min-height:20px;color:#c43a3a;font-size:12px;}
+.rename-file-actions{display:flex;justify-content:flex-end;gap:10px;}
+.rename-file-actions button{padding:8px 22px;border:1px solid #b9cad8;border-radius:5px;background:white;color:#33485c;font:inherit;cursor:pointer;}
+.rename-file-actions button[type="submit"]{background:#3696dd;border-color:#3696dd;color:white;}
+
 body{
 
 background:transparent;

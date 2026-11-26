@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penguin空间</title>
     <link rel="stylesheet" href="style/QQ.css?v=history-top-gap-4">
-    <link rel="stylesheet" href="style/QZone.css?v=matching-close-1">
+    <link rel="stylesheet" href="style/QZone.css?v=rounded-content-5">
 </head>
 
 <body>
@@ -16,10 +16,32 @@
             <button class="qzone-close" type="button" aria-label="关闭空间">×</button>
         </div>
 
+        <div class="qzone-scroll">
+        <section class="qzone-profile" id="qzone-profile" aria-label="个人资料">
+            <div class="qzone-profile-row">
+                <div class="qzone-profile-avatar">
+                    <span aria-hidden="true">头像</span>
+                    <!-- 将头像图片放到 figure/qzone-avatar.png 即可替换占位。 -->
+                    <img src="figure/qzone-avatar.png" alt="XLPJ 的头像">
+                </div>
+                <div class="qzone-profile-info">
+                    <h1>XLPJ</h1>
+                    <p class="qzone-signature">俺は運命と戦う、そして勝ってみせる。</p>
+                </div>
+            </div>
+        </section>
+
         <div class="qzone-body">
+            <nav class="qzone-sidebar" aria-label="空间导航">
+                <button type="button" class="qzone-nav-item is-active" data-view="feed" aria-current="page">好友动态</button>
+                <button type="button" class="qzone-nav-item" data-view="profile">个人主页</button>
+                <button type="button" class="qzone-nav-item" data-view="album">相册</button>
+            </nav>
+            <section class="qzone-page" hidden></section>
             <div class="qzone-feed" aria-live="polite">
                 <div class="qzone-loading">动态加载中……</div>
             </div>
+        </div>
         </div>
 
         <div class="qzone-footer">
@@ -27,6 +49,6 @@
         </div>
     </div>
 
-    <script src="script/QZone.js?v=qqspace-layout-1"></script>
+    <script src="script/QZone.js?v=xlpj-signature-4"></script>
 </body>
 </html>

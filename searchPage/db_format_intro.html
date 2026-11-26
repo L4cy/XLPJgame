@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="认识传统 QQ 的 Msg3.0.db：扩展名、DAT 文件改名与本地聊天记录导入。">
+    <title>db文件格式转化｜QQ 记录的保存与读取</title>
+    <script src="../script/app-runtime.js"></script>
+    <style>
+        *{box-sizing:border-box}
+        body{margin:0;background:#f4f7fa;color:#354758;font-family:"Microsoft YaHei","PingFang SC",sans-serif}
+        .topbar{position:sticky;top:0;z-index:10;height:56px;background:#fff;border-bottom:1px solid #dce5ed;display:flex;align-items:center;justify-content:space-between;padding:0 28px;color:#57758e;font-size:14px}
+        .close{border:0;background:transparent;color:#527ca0;cursor:pointer;font:inherit}
+        .close{font-size:26px;line-height:1;width:36px;height:36px;border-radius:6px}
+        .close:hover{background:#eaf2f8}
+        article{width:min(760px,calc(100% - 40px));margin:32px auto 52px;padding:38px 42px;background:#fff;border:1px solid #e0e8ef;border-radius:8px}
+        .category{color:#7592a9;font-size:12px;letter-spacing:2px;margin-bottom:14px}
+        h1{font-size:clamp(25px,4vw,34px);font-weight:600;line-height:1.5;margin:0 0 10px}
+        .subtitle{color:#7c8e9e;font-size:14px;margin:0 0 24px}
+        .intro{border-left:3px solid #6e9dbf;background:#f1f6fa;padding:16px 20px;margin:0 0 28px;font-size:15px;line-height:1.9}
+        h2{margin:30px 0 12px;font-size:19px;color:#345d7e}
+        p,li{font-size:15px;line-height:2;overflow-wrap:anywhere}
+        p{margin:0 0 16px}
+        code{font-family:Consolas,monospace;font-size:.95em;background:#eef3f7;border-radius:3px;padding:2px 5px;overflow-wrap:anywhere}
+        .example{padding:18px 20px;background:#f4f7fa;border:1px solid #e1e9ef;border-radius:5px;line-height:2;font-family:Consolas,"Microsoft YaHei",monospace;overflow-wrap:anywhere}
+        ol{padding-left:24px}
+        li{padding-left:4px;margin:8px 0}
+        .note{margin-top:26px;border-top:1px solid #e1e9ef;padding-top:20px;color:#6d8191;font-size:13px}
+        footer{margin-top:28px;padding-top:18px;border-top:1px solid #e1e9ef;color:#8192a0;font-size:12px;line-height:2}
+        footer a{color:#527ca0;text-underline-offset:3px}
+        button:focus-visible,a:focus-visible{outline:2px solid #527ca0;outline-offset:3px}
+        @media(max-width:520px){article{padding:25px 20px;margin-top:20px}.topbar{padding:0 16px}.example{padding:14px}}
+    </style>
+</head>
+<body>
+    <nav class="topbar" aria-label="文章导航"><span>电脑使用小知识</span><button class="close" type="button" aria-label="关闭文章，返回搜索" onclick="GameApp.openPage('search.html')">×</button></nav>
+    <article>
+        <header>
+            <div class="category">从零开始学计算机 / 文件管理 / 本地数据 </div>
+            <h1>db文件格式转化</h1>
+            <p class="subtitle">文 | 小L爱电脑</p>
+        </header>
+        <p class="intro">看到一个打不开的 DAT 文件，先别急着删除。它可能只是换了名字的旧数据。想知道能不能恢复使用，关键在于它原来是什么，而不只是现在叫什么。</p>
+        <h2>QQ 的聊天记录放在哪里？</h2>
+        <p>传统 Windows QQ 常把本地聊天记录保存在名为 <code>Msg3.0.db</code> 的数据库中，常见位置是“文档 → Tencent Files → 自己的 QQ 号”。这里的 <code>.db</code> 是数据库文件常用的扩展名。</p>
+        <h2>改成 DAT，文件里会发生什么？</h2>
+        <p>有人整理旧电脑资料时，会把数据库副本换成不显眼的名称，例如把 <code>Msg3.0.db</code> 改成 <code>archive_cache.dat</code>，再与其他迁移资料放在一起。<code>.dat</code> 常被用于命名数据文件，单看名称通常难以判断具体用途。</p>
+        <div class="example" aria-label="文件改名示例">原来的数据库：Msg3.0.db<br>改名保存的副本：archive_cache.dat<br>需要读取时：archive_cache.db</div>
+        <p>这个操作只是重命名，文件内容没有被转换，也不会因为改名而丢失。复制或传递这个副本时，原有数据仍随文件保留。不过，能否发送还取决于传输平台的限制，换后缀并不能保证通过。</p>
+        <p><strong>保存数据库并不需要改成 DAT，DAT 也不会让数据更安全或更耐存放。</strong>改名最多让旁人不容易一眼认出用途，不能防止懂得识别文件的人读取。需要保护隐私时，应使用加密和访问权限；保存时则应保留完整备份。</p>
+        <h2>需要使用时，怎样改回来？</h2>
+        <ol>
+            <li>先确认这个文件原本确实是 QQ 聊天数据库，并保留一份副本。</li>
+            <li>在文件夹中打开“显示文件扩展名”，看到文件名末尾的 <code>.dat</code>。</li>
+            <li>右键选择“重命名”，把末尾的 <code>.dat</code> 改为 <code>.db</code>。注意不要变成 <code>archive_cache.db.dat</code>。</li>
+            <li>在支持相应数据的传统 QQ 中，找到“消息管理器 → 工具 → 导入消息记录”，选择“从指定文件导入”，再浏览到数据库副本。</li>
+        </ol>
+        <p>不同版本的导入入口和支持范围可能不同。改回后缀只是恢复文件的名称标识，能否导入还取决于账号、版本以及数据库是否完整。它不会解除加密，也不能修复已经损坏的记录。</p>
+        <p class="note">只有原本的数据库改名后才能这样恢复。把图片、普通文本或其他 DAT 文件改成 DB，不会让它们成为 QQ 聊天数据库。“改后缀”和“转换数据格式”是两种不同的操作。</p>
+        <footer>延伸阅读：<a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/common-file-name-extensions-in-windows" target="_blank" rel="noopener noreferrer">微软：Windows 文件扩展名</a> · <a href="https://github.com/QQBackup/QQDecrypt/blob/main/docs/decrypt/extract/PCQQ%20%28Windows%29.md" target="_blank" rel="noopener noreferrer">QQBackup：传统 PCQQ 数据库文档</a></footer>
+    </article>
+</body>
+</html>
