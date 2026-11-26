@@ -1,0 +1,69 @@
+{
+    "id": "deer",
+    "name": "林中鹿",
+    "type": "friend",
+    "messages": [],
+    "currentChoiceGroup": "choice_start",
+    "choiceGroups": {
+        "choice_start": [
+            {
+                "id": "deer_hello",
+                "text": "你好",
+                "time": "2026/07/06",
+                "maxSends": 1,
+                "next_group": "ask_identity",
+                "hintAfterSend": {
+                    "id": "deer_identity_hint",
+                    "type": "hint",
+                    "sender": "system",
+                    "align": "right",
+                    "text": "内心os：这位也是蓟县的大佬吗？之前没听说过，看起来前辈也没聊过天，还是问一下吧"
+                }
+            },
+            {
+                "id": "deer_password",
+                "text": "222",
+                "time": "2026/07/06",
+                "requiresHistoryMessageId": "deer_history_2",
+                "reply": "deer_reply_return"
+            }
+        ],
+        "ask_identity": [
+            {
+                "id": "deer_ask_identity",
+                "text": "不好意思忘记改备注了，请问你是谁？",
+                "time": "2026/07/06",
+                "maxSends": 1,
+                "next_group": "await_reply"
+            },
+            {
+                "id": "deer_password",
+                "text": "222",
+                "time": "2026/07/06",
+                "requiresHistoryMessageId": "deer_history_2",
+                "reply": "deer_reply_return"
+            }
+        ],
+        "await_reply": [
+            {
+                "id": "deer_password",
+                "text": "222",
+                "time": "2026/07/06",
+                "requiresHistoryMessageId": "deer_history_2",
+                "reply": "deer_reply_return"
+            }
+        ]
+    },
+    "replies": [
+        {
+            "id": "deer_reply_return",
+            "messages": [
+                {
+                    "sender": "deer",
+                    "text": "你回来了吗？潇洒哥"
+                }
+            ]
+        }
+    ],
+    "scriptVersion": 2
+}

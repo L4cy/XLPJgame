@@ -1,0 +1,174 @@
+{
+  "format": "game-qq-backup-v1",
+  "conversations": [
+    {
+      "id": "deer",
+      "messages": [
+        {
+          "id": "deer_history_1",
+          "sender": "deer",
+          "text": "您好，我是密文板传闻的作者，您是潇洒哥吗？",
+          "time": "2026/06/30",
+          "unread": false
+        },
+        {
+          "id": "deer_history_2",
+          "sender": "system",
+          "type": "hint",
+          "text": "你们已添加为好友",
+          "unread": false
+        },
+        {
+          "id": "deer_history_3",
+          "sender": "deer",
+          "text": "您好，很高兴您对密文板的传闻感兴趣",
+          "unread": false
+        },
+        {
+          "id": "deer_history_4",
+          "sender": "player",
+          "text": "[图片已被删除]",
+          "unread": false
+        },
+        {
+          "id": "deer_history_5",
+          "sender": "player",
+          "text": "我一醒来就看到这玩意在我床头了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_6",
+          "sender": "deer",
+          "text": "您是否有梦见什么？",
+          "unread": false
+        },
+        {
+          "id": "deer_history_7",
+          "sender": "player",
+          "text": "我今早4点才睡，头都晕了，早上9点醒了就看到了，还以为家里进贼了，吓醒了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_8",
+          "sender": "player",
+          "text": "没梦到什么",
+          "unread": false
+        },
+        {
+          "id": "deer_history_9",
+          "sender": "player",
+          "text": "这还真和游戏里的密文板挺像的",
+          "unread": false
+        },
+        {
+          "id": "deer_history_10",
+          "sender": "deer",
+          "text": "说起来，这次正好是萨米主题的危机合约，您是合约攻略者吗？",
+          "unread": false
+        },
+        {
+          "id": "deer_history_11",
+          "sender": "player",
+          "text": "你怎么知道？",
+          "unread": false
+        },
+        {
+          "id": "deer_history_12",
+          "sender": "deer",
+          "text": "久仰大名。我不怎么关心合约，但我朋友经常念叨一位很厉害的攻略者潇洒哥，没想到遇到本人了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_13",
+          "sender": "deer",
+          "text": "合约攻略似乎很辛苦，祝您一切顺利",
+          "unread": false
+        },
+        {
+          "id": "deer_history_14",
+          "sender": "player",
+          "text": "哈哈，谢谢",
+          "unread": false
+        },
+        {
+          "id": "deer_history_15",
+          "sender": "deer",
+          "text": "我是白酒报的见习作者，前不久才接触这款游戏。以前听过种种传闻，觉得很有意思，认真调查之后，才发现疑点重重",
+          "unread": false
+        },
+        {
+          "id": "deer_history_16",
+          "sender": "player",
+          "text": "怎么说",
+          "unread": false
+        },
+        {
+          "id": "deer_history_17",
+          "sender": "deer",
+          "text": "比如在今天之前，我还没见过现实中的密文板，或者说，我甚至都不确定密文板是否存在",
+          "unread": false
+        },
+        {
+          "id": "deer_history_18",
+          "sender": "deer",
+          "text": "还有，我追查了故事的传播源头，找到了最早散播它的几个人，但他们似乎都不愿透露更多",
+          "unread": false
+        },
+        {
+          "id": "deer_history_19",
+          "sender": "deer",
+          "text": "或者说，有点奇怪",
+          "unread": false
+        },
+        {
+          "id": "deer_history_20",
+          "sender": "deer",
+          "text": "像在回忆一场梦，模模糊糊的，而且他们的叙述本身就存在很多矛盾点，比如有人说他记得和另一个人一起过去的，但另一个人说他喝酒喝糊涂了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_21",
+          "sender": "deer",
+          "text": "我不知道这其中是否有人真正去过那边的世界，也怀疑过这只是不良公司的宣传手段，但还是觉得写下来更好",
+          "unread": false
+        },
+        {
+          "id": "deer_history_22",
+          "sender": "player",
+          "text": "还好你写下来了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_23",
+          "sender": "player",
+          "text": "[小兔盖被表情包]",
+          "unread": false
+        },
+        {
+          "id": "deer_history_24",
+          "sender": "deer",
+          "text": "我可以将您的图片发给别人看看吗？或许能收获一些线索",
+          "unread": false
+        },
+        {
+          "id": "deer_history_25",
+          "sender": "player",
+          "text": "好，谢谢你了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_26",
+          "sender": "player",
+          "text": "我去继续燃烧了",
+          "unread": false
+        },
+        {
+          "id": "deer_history_27",
+          "sender": "deer",
+          "text": "祝您好运",
+          "unread": false
+        }
+      ]
+    }
+  ]
+}
